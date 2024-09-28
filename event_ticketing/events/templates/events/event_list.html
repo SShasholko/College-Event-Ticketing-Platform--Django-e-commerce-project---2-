@@ -10,6 +10,9 @@
     <ul>
         {% for event in events %}
         <li>
+            {% if event.image %}
+                <img src="{{ event.image.url }}" alt="{{ event.title }}" style="width: 300px;">
+            {% endif %}
             <strong>{{ event.title }}</strong> - {{ event.date_time }}<br>
             {{ event.description }}<br>
             Tickets Remaining: {{ event.remaining_tickets }}
