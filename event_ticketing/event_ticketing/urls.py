@@ -19,11 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
+from django.views.generic.base import RedirectView
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('events/', include('events.urls')),
+    # path('', RedirectView.as_view(url='/events/', permanent=False)),
 ]
 
 if settings.DEBUG:
