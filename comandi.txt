@@ -2,6 +2,7 @@ python manage.py runserver
 
 pip freeze
 
+python manage.py makemigrations
 python manage.py migrate
 
 .\env\Scripts\activate

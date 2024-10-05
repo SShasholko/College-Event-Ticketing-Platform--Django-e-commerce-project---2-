@@ -1,0 +1,37 @@
+<!-- ticket_purchase.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Tickets for {{ event.title }}</title>
+
+    <script>
+        function updateTotalPrice() {
+            const price = {{ price }}; // Get the event price
+            const quantity = document.getElementById('id_quantity').value; // Get quantity
+            const totalPrice = price * quantity; // Calculate total price
+            document.getElementById('total_price').innerText = totalPrice.toFixed(2); // Update total price display
+        }
+    </script>
+
+
+</head>
+<body>
+    <h1>Purchase Tickets for {{ event.title }}</h1>
+    <p>Price per Ticket: ${{ event.ticket_price }}</p>  <!-- Display the event price -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Purchase</button>
+    </form>
+    <p>Total Price: $<span id="total_price">{{ total_price }}</span></p>
+    <a href="{% url 'event_detail' event.id %}">Back to Event Details</a>
+
+
+    <script>
+        // Update the total price on quantity change
+        document.getElementById('id_quantity').addEventListener('input', updateTotalPrice);
+    </script>
+
+</body>
+</html>

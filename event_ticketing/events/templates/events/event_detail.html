@@ -23,11 +23,14 @@
     <!-- Call to Action: Purchase Tickets (If applicable) -->
     <p>
         {% if event.remaining_tickets > 0 %}
-            <a href="#">Purchase Tickets for ${{ event.ticket_price }}</a>
+            <a href="{% url 'ticket_purchase' event.id %}">Purchase Tickets</a>
         {% else %}
             <span>Sold Out!</span>
         {% endif %}
     </p>
+
+    <!-- event_detail.html (make sure to include this link) -->
+
 
     <!-- Link back to event list -->
     <p>
