@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }} - Event Details</title>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+
+    <!-- Event Image -->
+    {% if event.image %}
+    <img src="{{ event.image.url }}" alt="{{ event.title }}" style="width: 500px;">
+    {% endif %}
+
+    <!-- Event Details -->
+    <p><strong>Date and Time:</strong> {{ event.date_time }}</p>
+    <p><strong>Venue:</strong> {{ event.venue }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
+    <p><strong>Tickets Remaining:</strong> {{ event.remaining_tickets }} out of {{ event.total_tickets }}</p>
+
+    <!-- Call to Action: Purchase Tickets (If applicable) -->
+    <p>
+        {% if event.remaining_tickets > 0 %}
+            <a href="#">Purchase Tickets for ${{ event.ticket_price }}</a>
+        {% else %}
+            <span>Sold Out!</span>
+        {% endif %}
+    </p>
+
+    <!-- Link back to event list -->
+    <p>
+        <a href="{% url 'event_list' %}">Back to Event List</a>
+    </p>
+</body>
+</html>

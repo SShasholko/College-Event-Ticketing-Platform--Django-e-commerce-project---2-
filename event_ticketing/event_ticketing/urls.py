@@ -20,13 +20,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic.base import RedirectView
-
+from . import views
+from events import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+
+
+
+    # path('events/', views.event_list, name='event_list'), 
+    # path('<int:event_id>/', views.event_detail, name='event_detail'),    
     path('events/', include('events.urls')),
+    
     # path('', RedirectView.as_view(url='/events/', permanent=False)),
 ]
 

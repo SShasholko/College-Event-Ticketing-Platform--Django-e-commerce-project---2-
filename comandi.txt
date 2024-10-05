@@ -1,0 +1,9 @@
+python manage.py runserver
+
+pip freeze
+
+python manage.py migrate
+
+.\env\Scripts\activate
+
+cd event_ticketing
