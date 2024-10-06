@@ -4,7 +4,8 @@ from .forms import TicketPurchaseForm
 
 # Create your views here.
 def event_list(request):
-    events = Event.objects.all()
+    events = Event.objects.all().order_by('date_time')
+    # events = Event.objects.all()
     return render(request, 'events/event_list.html', {'events': events})
 
 

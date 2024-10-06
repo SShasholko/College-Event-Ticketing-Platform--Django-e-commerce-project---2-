@@ -18,6 +18,8 @@
             {{ event.description }}<br>
             Tickets Remaining: {{ event.remaining_tickets }}
         </li>
+        {% empty %}
+        <p>No upcoming events.</p>
         {% endfor %}
     </ul>
 </body>
