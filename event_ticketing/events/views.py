@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, Ticket, Category
 from .forms import TicketPurchaseForm
-
+from datetime import datetime  
 
 def home(request):
     # Fetch the three soonest events
@@ -9,6 +9,7 @@ def home(request):
 
     context = {
         'soonest_events': soonest_events,
+        'current_year': datetime.now().year,
     }
     
     return render(request, 'events/home.html', context)

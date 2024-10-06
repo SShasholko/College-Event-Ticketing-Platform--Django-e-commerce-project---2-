@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event List</title>
-</head>
-<body>
+{% extends 'events/base.html' %}
+
+{% block title %}Event List{% endblock %}
+
+{% block content %}
     <h1>Upcoming Events</h1>
     
 
@@ -56,5 +53,5 @@
         <p>No upcoming events.</p>
         {% endfor %}
     </ul>
-</body>
-</html>
+
+    {% endblock %}

@@ -1,9 +1,10 @@
 <!-- ticket_purchase.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Purchase Tickets for {{ event.title }}</title>
+{% extends 'events/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
 
     <script>
         function updateTotalPrice() {
@@ -15,8 +16,6 @@
     </script>
 
 
-</head>
-<body>
     <h1>Purchase Tickets for {{ event.title }}</h1>
     <p>Price per Ticket: ${{ event.ticket_price }}</p>  <!-- Display the event price -->
     <form method="post">
@@ -33,5 +32,4 @@
         document.getElementById('id_quantity').addEventListener('input', updateTotalPrice);
     </script>
 
-</body>
-</html>
+{% endblock %}
