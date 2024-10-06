@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event
+from .models import Category, Event
 
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
@@ -13,3 +13,4 @@ class EventAdmin(admin.ModelAdmin):
     image_preview.short_description = 'Image Preview'
 
 admin.site.register(Event, EventAdmin)
+admin.site.register(Category)
