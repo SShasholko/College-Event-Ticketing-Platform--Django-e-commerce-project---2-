@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+  
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Event Ticketing Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'event_list' %}">Events</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Upcoming Events</h2>
+        <div class="events">
+            {% for event in soonest_events %}
+                <div class="event">
+                    <h3>{{ event.title }}</h3>
+                    <p>Date: {{ event.date_time }}</p>
+                    <p>{{ event.description }}</p>
+                    <a href="{% url 'event_detail' event.id %}">View Details</a>
+                </div>
+            {% empty %}
+                <p>No upcoming events.</p>
+            {% endfor %}
+        </div>
+        <a href="{% url 'event_list' %}">See All Events</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Event Ticketing Platform</p>
+    </footer>
+</body>
+</html>

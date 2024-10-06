@@ -2,6 +2,19 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, Ticket, Category
 from .forms import TicketPurchaseForm
 
+
+def home(request):
+    # Fetch the three soonest events
+    soonest_events = Event.objects.all().order_by('date_time')[:3]
+
+    context = {
+        'soonest_events': soonest_events,
+    }
+    
+    return render(request, 'events/home.html', context)
+
+
+
 # Create your views here.
 def event_list(request):
     # Get the search query and category filter from the request

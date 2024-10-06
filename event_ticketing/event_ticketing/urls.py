@@ -35,6 +35,7 @@ urlpatterns = [
     path('events/', include('events.urls')),
     
     # path('', RedirectView.as_view(url='/events/', permanent=False)),
+    path('', views.home, name='home'),  # Add this line for the home page
 ]
 
 if settings.DEBUG:
