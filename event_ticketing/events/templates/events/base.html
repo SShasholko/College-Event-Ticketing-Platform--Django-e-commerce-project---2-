@@ -13,6 +13,13 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'event_list' %}">Events</a></li>
 
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+                    <li>Welcome, {{ user.username }}!</li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}">Log In</a></li>
+                    <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                {% endif %}
 
             </ul>
         </nav>
@@ -24,7 +31,7 @@
     </main>
 
     <footer>
-        <p>&copy; {{ current_year }} Your Organization. All rights reserved.</p>
+        <p>&copy; {{ current_year }} Sveta's Django site ❤️. All rights reserved 😊.</p>
     </footer>
 </body>
 </html>

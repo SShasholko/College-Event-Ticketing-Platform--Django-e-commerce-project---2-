@@ -28,8 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 
-
-
     # path('events/', views.event_list, name='event_list'), 
     # path('<int:event_id>/', views.event_detail, name='event_detail'),    
     path('events/', include('events.urls')),
