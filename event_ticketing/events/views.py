@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, Ticket, Category
 from .forms import TicketPurchaseForm
 from datetime import datetime  
+from django.utils import timezone
+
 
 def home(request):
     # Fetch the three soonest events
@@ -22,7 +24,10 @@ def event_list(request):
     search_query = request.GET.get('search', '')
     category_filter = request.GET.get('category', None)
 
-    events = Event.objects.all().order_by('date_time')
+    current_time = timezone.now()
+
+    events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')
+    # events = Event.objects.all().order_by('date_time')
     # events = Event.objects.all()
 
      # If there is a search query, filter events by title (case-insensitive)
