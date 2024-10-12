@@ -1,9 +1,10 @@
 {% extends "events/base.html" %}
-
+<!-- {% load socialaccount %} -->
 {% block title %}Log In{% endblock %}
 
 {% block content %}
     <h2>Log In</h2>
+    <a href="{% provider_login_url 'google' %}">Log in with Google</a>
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}

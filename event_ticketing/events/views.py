@@ -5,6 +5,8 @@ from datetime import datetime
 from django.utils import timezone
 
 
+
+
 def home(request):
     # Fetch the three soonest events
     soonest_events = Event.objects.all().order_by('date_time')[:3]

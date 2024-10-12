@@ -9,7 +9,4 @@ urlpatterns = [
     
    # path('events/', views.event_list, name='event_list'),
     path('', views.event_list, name='event_list'),
-
-
-
 ]
