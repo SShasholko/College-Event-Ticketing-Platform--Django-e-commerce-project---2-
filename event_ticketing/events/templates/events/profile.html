@@ -8,14 +8,32 @@
     <p><strong>First Name:</strong> {{ user.first_name }}</p>
     <p><strong>Last Name:</strong> {{ user.last_name }}</p>
 
-    <h2>Your Events:</h2>
-    <ul>
-        {% for event in user_events %}
-            <li>{{ event.name }} - {{ event.date }}</li>
-        {% empty %}
-            <p>No events added yet.</p>
-        {% endfor %}
-    </ul>
+    <h2>Your Events</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date & Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.date_time }}</td>
+                <td>
+                    <a href="{% url 'edit_event' event.id %}">Edit</a>
+                    <a href="{% url 'delete_event' event.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No events added yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <a href="{% url 'add_event' %}">
         <button>Add New Event</button>

@@ -3,6 +3,7 @@ from .models import Event, Ticket, Category
 from .forms import TicketPurchaseForm, EventForm
 from datetime import datetime  
 from django.utils import timezone
+from django.contrib import messages
 
 
 
@@ -81,15 +82,12 @@ def ticket_purchase(request, event_id):
 
 
 def profile_view(request):
-
-    user = request.user
-    
-    user_events = Event.objects.filter(user=user)
-
-    return render(request, 'events/profile.html', {
-        'user': user,
-        'user_events': user_events,
-    })
+    if request.user.is_authenticated:
+        events = Event.objects.filter(user=request.user)  # Ensure you are filtering by the logged-in user
+        return render(request, 'events/profile.html', {'events': events})
+    else:
+        # Redirect to login or return an appropriate response if user is not authenticated
+        return redirect('/')  # Replace 'login' with your actual login URL name
 
 
 def add_event(request):
@@ -104,3 +102,24 @@ def add_event(request):
         form = EventForm()
 
     return render(request, 'events/add_event.html', {'form': form})
+
+
+def edit_event(request, event_id):
+    event = get_object_or_404(Event, id=event_id, user=request.user)  # Ensure the user can only edit their events
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Redirect to the profile page
+    else:
+        form = EventForm(instance=event)
+    return render(request, 'events/edit_event.html', {'form': form})
+
+
+def delete_event(request, event_id):
+    event = get_object_or_404(Event, id=event_id, user=request.user)  # Ensure the user can only delete their events
+    if request.method == 'POST':
+        event.delete()
+        messages.success(request, "Event deleted successfully!")
+        return redirect('profile')  # Redirect to the profile page
+    return render(request, 'events/delete_event.html', {'event': event})

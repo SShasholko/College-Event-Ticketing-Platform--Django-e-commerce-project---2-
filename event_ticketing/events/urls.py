@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 
+
 urlpatterns = [
     # Define the URL for the event detail page
     path('<int:event_id>/', views.event_detail, name='event_detail'),

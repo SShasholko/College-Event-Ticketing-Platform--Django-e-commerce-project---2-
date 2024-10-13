@@ -22,6 +22,10 @@ from django.urls import path
 from django.views.generic.base import RedirectView
 from . import views
 from events import views
+from events.views import profile_view, edit_event, delete_event
+# from event.views import profile_view, edit_event, delete_event
+# from event_ticketing.event.views import profile_view, edit_event, delete_event
+
 
 
 urlpatterns = [
@@ -38,6 +42,8 @@ urlpatterns = [
     
     path('profile/', views.profile_view, name='profile'),
     path('add-event/', views.add_event, name='add_event'),
+    path('edit-event/<int:event_id>/', edit_event, name='edit_event'),
+    path('delete-event/<int:event_id>/', delete_event, name='delete_event'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
