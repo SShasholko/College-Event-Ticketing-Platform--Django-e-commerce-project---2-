@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
 
@@ -11,6 +12,7 @@ class Category(models.Model):
 
 
 class Event(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
     title = models.CharField(max_length=255)
     description = models.TextField()
     date_time = models.DateTimeField()
@@ -22,6 +24,15 @@ class Event(models.Model):
 
     #    Link to category
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)  
+
+    def save(self, *args, **kwargs):
+        # When creating a new event, set remaining_tickets to total_tickets
+        if not self.pk:  # Only set this when the event is first created
+            self.remaining_tickets = self.total_tickets
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
 
 
 class Ticket(models.Model):

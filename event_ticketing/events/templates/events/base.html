@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </head>
 <body>
@@ -17,6 +21,7 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account_logout' %}">Log Out</a></li>
                     <li>Welcome, {{ user.username }}!</li>
+                    <a href="{% url 'profile' %}">Profile</a>
                 {% else %}
                     <li><a href="{% url 'account_login' %}">Log In</a></li>
                     <li><a href="{% url 'account_signup' %}">Sign Up</a></li>

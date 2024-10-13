@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, Ticket, Category
-from .forms import TicketPurchaseForm
+from .forms import TicketPurchaseForm, EventForm
 from datetime import datetime  
 from django.utils import timezone
 
@@ -78,3 +78,29 @@ def ticket_purchase(request, event_id):
 
 
     return render(request, 'events/ticket_purchase.html', {'form': form, 'event': event, 'price': event.ticket_price, 'total_price': total_price})
+
+
+def profile_view(request):
+
+    user = request.user
+    
+    user_events = Event.objects.filter(user=user)
+
+    return render(request, 'events/profile.html', {
+        'user': user,
+        'user_events': user_events,
+    })
+
+
+def add_event(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.user = request.user  # Assign the event to the logged-in user
+            event.save()
+            return redirect('profile')  # Redirect to profile page after event creation
+    else:
+        form = EventForm()
+
+    return render(request, 'events/add_event.html', {'form': form})

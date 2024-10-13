@@ -34,7 +34,11 @@ urlpatterns = [
     
     # path('', RedirectView.as_view(url='/events/', permanent=False)),
     path('', views.home, name='home'),  
-]
+
+    
+    path('profile/', views.profile_view, name='profile'),
+    path('add-event/', views.add_event, name='add_event'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
