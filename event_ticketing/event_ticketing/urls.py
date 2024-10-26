@@ -37,7 +37,12 @@ urlpatterns = [
     path('events/', include('events.urls')),
     
     # path('', RedirectView.as_view(url='/events/', permanent=False)),
-    path('', views.home, name='home'),  
+    path('', views.home, name='home'),
+     
+    # path('payments/', include('payments.urls')),
+   
+    path('payments/', include('payments.urls')),
+
 
     
     path('profile/', views.profile_view, name='profile'),

@@ -18,10 +18,10 @@
 
     <h1>Purchase Tickets for {{ event.title }}</h1>
     <p>Price per Ticket: ${{ event.ticket_price }}</p>  <!-- Display the event price -->
-    <form method="post">
+    <form method="post" id="payment-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Purchase</button>
+        <button type="submit" id="checkout-button">Purchase Ticket</button>
     </form>
     <p>Total Price: $<span id="total_price">{{ total_price }}</span></p>
     <a href="{% url 'event_detail' event.id %}">Back to Event Details</a>
@@ -32,4 +32,43 @@
         document.getElementById('id_quantity').addEventListener('input', updateTotalPrice);
     </script>
 
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    // Initialize Stripe with your public key
+    const stripe = Stripe('pk_test_51QABFFGariyyw43I1YaqstFbwppWvdVawZud6wrzfJ0OPdpm7sYkQxemEOaMadNml5s9QHisXkCD0MFMzrNy9TWM00LOGaJGxf'); 
+
+    const form = document.getElementById('payment-form');
+    
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        // Fetch the checkout session from your server
+        fetch(`/payments/checkout/{{ event.id }}/`, {  // Add trailing slash here
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ quantity: document.getElementById('id_quantity').value })
+})
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            // Redirect to Stripe Checkout
+            return stripe.redirectToCheckout({ sessionId: data.id });
+        })
+        .then(function (result) {
+            if (result.error) {
+                // Inform the customer that there was an error
+                alert(result.error.message);
+            }
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
+            alert('There was an error processing your request. Please try again.');
+        });
+    });
+</script>
 {% endblock %}

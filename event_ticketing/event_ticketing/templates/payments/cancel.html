@@ -1,0 +1,10 @@
+<!-- cancel.html -->
+{% extends "events/base.html" %}
+
+{% block title %}Payment Canceled{% endblock %}
+
+{% block content %}
+<h1>Payment Canceled</h1>
+<p>Your payment was not completed. You can return to your previous page.</p>
+<a href="{% url 'home' %}">Return to Home</a>
+{% endblock %}

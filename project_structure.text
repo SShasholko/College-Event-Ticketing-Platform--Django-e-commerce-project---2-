@@ -1,5 +1,6 @@
 
 - event_ticketing
+  - .env
   - .gitignore
   - db.sqlite3
   - events
@@ -11,20 +12,26 @@
       - 0002_event_image.py
       - 0003_ticket.py
       - 0004_category_event_category.py
+      - 0005_event_user.py
       - __init__.py
       - __pycache__
         - 0001_initial.cpython-312.pyc
         - 0002_event_image.cpython-312.pyc
         - 0003_ticket.cpython-312.pyc
         - 0004_category_event_category.cpython-312.pyc
+        - 0005_event_user.cpython-312.pyc
         - __init__.cpython-312.pyc
     - models.py
     - templates
       - events
+        - add_event.html
         - base.html
+        - delete_event.html
+        - edit_event.html
         - event_detail.html
         - event_list.html
         - home.html
+        - profile.html
         - ticket_purchase.html
     - tests.py
     - urls.py
@@ -44,6 +51,11 @@
     - templates
       - account
         - login.html
+        - signup.html
+      - payments
+        - cancel.html
+        - checkout.html
+        - success.html
     - urls.py
     - views.py
     - wsgi.py
@@ -57,8 +69,32 @@
   - manage.py
   - media
     - event_images
+      - 0-02-0a-1dfcd4cede15a7e41d18a66f079d0682e63a1121aa4991364286ca9cb561725e_e9_1Wlw0DT.jpg
+      - 0-02-0a-4e8c71dd6a124c881bc0076e3412bdf48fcd3515bfa61014b0fd4948be051a89_fc_L143Ken.jpg
+      - 0-02-0a-859bfacd8b6240b9d8e87d613fca94572f84aa0422257fca1f59f98ecf6b6073_bd_sM7QEdt.jpg
       - FuturePrintTechFestLogo.jpg
       - Gala-Dinner-Decor.jpg
       - MarylandCollegeCupThumb.jpg
       - sddefault.jpg
       - startup-pitch-competition.jpg
+  - payments
+    - admin.py
+    - apps.py
+    - migrations
+      - 0001_initial.py
+      - __init__.py
+      - __pycache__
+        - 0001_initial.cpython-312.pyc
+        - __init__.cpython-312.pyc
+    - models.py
+    - tests.py
+    - urls.py
+    - views.py
+    - __init__.py
+    - __pycache__
+      - admin.cpython-312.pyc
+      - apps.cpython-312.pyc
+      - models.cpython-312.pyc
+      - urls.cpython-312.pyc
+      - views.cpython-312.pyc
+      - __init__.cpython-312.pyc

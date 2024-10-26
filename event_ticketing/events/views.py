@@ -4,6 +4,7 @@ from .forms import TicketPurchaseForm, EventForm
 from datetime import datetime  
 from django.utils import timezone
 from django.contrib import messages
+from django.conf import settings
 
 
 
@@ -30,8 +31,7 @@ def event_list(request):
     current_time = timezone.now()
 
     events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')
-    # events = Event.objects.all().order_by('date_time')
-    # events = Event.objects.all()
+
 
      # If there is a search query, filter events by title (case-insensitive)
     if search_query:
@@ -76,9 +76,7 @@ def ticket_purchase(request, event_id):
     quantity = int(quantity) if quantity else 1
     total_price = quantity * event.ticket_price  # Calculate the total price
 
-
-
-    return render(request, 'events/ticket_purchase.html', {'form': form, 'event': event, 'price': event.ticket_price, 'total_price': total_price})
+    return render(request, 'events/ticket_purchase.html', {'form': form, 'event': event, 'price': event.ticket_price, 'total_price': total_price, 'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY})
 
 
 def profile_view(request):
@@ -117,9 +115,13 @@ def edit_event(request, event_id):
 
 
 def delete_event(request, event_id):
-    event = get_object_or_404(Event, id=event_id, user=request.user)  # Ensure the user can only delete their events
+    event = get_object_or_404(Event, id=event_id, user=request.user)
     if request.method == 'POST':
         event.delete()
         messages.success(request, "Event deleted successfully!")
         return redirect('profile')  # Redirect to the profile page
     return render(request, 'events/delete_event.html', {'event': event})
+
+
+
+
