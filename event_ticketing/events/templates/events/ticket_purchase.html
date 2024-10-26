@@ -18,7 +18,7 @@
 
     <h1>Purchase Tickets for {{ event.title }}</h1>
     <p>Price per Ticket: ${{ event.ticket_price }}</p>  <!-- Display the event price -->
-    <form method="post" id="payment-form">
+    <form method="post" id="payment-form" action="{% url 'checkout' event.id %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" id="checkout-button">Purchase Ticket</button>
@@ -53,6 +53,10 @@
     body: JSON.stringify({ quantity: document.getElementById('id_quantity').value })
 })
         .then(function (response) {
+            if (response.redirected) {
+                window.location.href = response.url; // Redirect to login page
+                return;
+            }
             return response.json();
         })
         .then(function (data) {

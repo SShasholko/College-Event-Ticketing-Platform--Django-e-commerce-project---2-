@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-# payments/views.py
 
 import stripe
 import json
@@ -11,14 +10,19 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect,  get_object_or_404
 from .models import Payment
 from events.models import Event 
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-@require_POST
 
+@require_POST
+@login_required
 def create_checkout_session(request, event_id):
     """Create a Stripe Checkout Session for purchasing an event ticket."""
+    if not request.user.is_authenticated:
+        return redirect(f"{settings.LOGIN_URL}?next=/payments/checkout/{event_id}/")
+    
     event = get_object_or_404(Event, id=event_id)
 
     if request.method == 'POST':
@@ -51,12 +55,15 @@ def create_checkout_session(request, event_id):
         return JsonResponse({'id': session.id})
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
+
+
+
 @csrf_exempt
 def stripe_webhook(request):
     """Stripe webhook to confirm the payment."""
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET  # Set this in Stripe's dashboard
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET 
     event = None
 
     try:
@@ -69,7 +76,7 @@ def stripe_webhook(request):
     # Handle the event
     if event['type'] == 'payment_intent.succeeded':
         intent = event['data']['object']
-        # Update your payment's status here based on `intent['id']`
+    
         payment = Payment.objects.get(stripe_payment_intent_id=intent['id'])
         payment.status = 'succeeded'
         payment.save()

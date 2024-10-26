@@ -78,8 +78,8 @@ SOCIALACCOUNT_PROVIDERS = {
 EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
 
 # Redirect after successful login/logout
-LOGIN_URL = '/accaunts/login/'
-LOGIN_REDIRECT_URL = '/events/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # # Django-Allauth configuration
