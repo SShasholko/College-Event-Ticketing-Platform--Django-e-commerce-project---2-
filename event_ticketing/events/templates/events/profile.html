@@ -8,35 +8,46 @@
     <p><strong>First Name:</strong> {{ user.first_name }}</p>
     <p><strong>Last Name:</strong> {{ user.last_name }}</p>
 
-    <h2>Your Events</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Date & Time</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for event in events %}
-            <tr>
-                <td>{{ event.title }}</td>
-                <td>{{ event.date_time }}</td>
-                <td>
-                    <a href="{% url 'edit_event' event.id %}">Edit</a>
+   
+    <h2>Your Created Events</h2>
+    {% if created_events %}
+        <ul>
+            {% for event in created_events %}
+                <li>
+                    <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> - {{ event.date_time }}
+                    <a href="{% url 'edit_event' event.id %}">Edit</a> |
                     <a href="{% url 'delete_event' event.id %}">Delete</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="3">No events added yet.</td>
-            </tr>
+                </li>
             {% endfor %}
-        </tbody>
-    </table>
+        </ul>
 
-    <a href="{% url 'add_event' %}">
-        <button>Add New Event</button>
-    </a>
+        <a href="{% url 'add_event' %}">
+            <button>Add New Event</button>
+        </a>
+    {% else %}
+        <p>You have not created any events.</p>
+    {% endif %}
+
+    <h2>Purchased Tickets</h2>
+{% if purchased_payments %}
+    <ul>
+    {% for payment in purchased_payments %}
+        <li>
+            <strong>Event Title:</strong> {{ payment.event.title }}<br>
+            <strong>Amount:</strong> ${{ payment.amount }}<br>
+            <strong>Quantity:</strong> {{ payment.quantity }}<br>
+            {% if payment.qr_code %}
+                <img src="{{ payment.qr_code.url }}" alt="QR Code">
+            {% else %}
+                No QR code available
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No purchased tickets found.</p>
+{% endif %}
+
+
     
 {% endblock %}

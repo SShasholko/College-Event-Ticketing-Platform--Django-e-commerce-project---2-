@@ -35,8 +35,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-
 SITE_ID = 2
 
 # Application definition
@@ -198,3 +196,4 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
+

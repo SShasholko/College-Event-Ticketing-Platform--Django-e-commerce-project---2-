@@ -1,3 +1,7 @@
+.\env\Scripts\activate
+
+cd event_ticketing
+
 python manage.py runserver
 
 pip freeze
@@ -5,8 +9,5 @@ pip freeze
 python manage.py makemigrations
 python manage.py migrate
 
-.\env\Scripts\activate
-
-cd event_ticketing
 
 ngrok http 8000

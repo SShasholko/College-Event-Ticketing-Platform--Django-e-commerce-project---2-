@@ -5,7 +5,8 @@ from datetime import datetime
 from django.utils import timezone
 from django.contrib import messages
 from django.conf import settings
-
+from payments.models import Payment
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -79,13 +80,22 @@ def ticket_purchase(request, event_id):
     return render(request, 'events/ticket_purchase.html', {'form': form, 'event': event, 'price': event.ticket_price, 'total_price': total_price, 'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY})
 
 
+@login_required
 def profile_view(request):
-    if request.user.is_authenticated:
-        events = Event.objects.filter(user=request.user)  # Ensure you are filtering by the logged-in user
-        return render(request, 'events/profile.html', {'events': events})
-    else:
-        # Redirect to login or return an appropriate response if user is not authenticated
-        return redirect('/')  # Replace 'login' with your actual login URL name
+    # Retrieve events created by the user
+    created_events = Event.objects.filter(user=request.user)
+    
+    # Retrieve events the user has purchased tickets for
+    purchased_payments = Payment.objects.filter(user=request.user)
+    purchased_events = [payment.event for payment in purchased_payments]  # Extract events from payments
+
+    # Pass both created and purchased events to the template
+    context = {
+        'created_events': created_events,
+        'purchased_events': purchased_events,
+        'purchased_payments': purchased_payments,
+    }
+    return render(request, 'events/profile.html', context)
 
 
 def add_event(request):
