@@ -12,7 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     # Fetch the three soonest events
-    soonest_events = Event.objects.all().order_by('date_time')[:3]
+    current_time = timezone.now()
+    soonest_events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')[:3]
 
     context = {
         'soonest_events': soonest_events,
