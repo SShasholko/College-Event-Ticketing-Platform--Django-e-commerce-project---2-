@@ -1,0 +1,17 @@
+{% extends "events/base.html" %}
+
+{% block title %}Your Ticket for {{ event.title }}{% endblock %}
+
+{% block content %}
+<h2>Thank you for your purchase, {{ user.username }}!</h2>
+    <p>Here are the details of your ticket:</p>
+    <ul>
+        <li><strong>Event:</strong> {{ event.title }}</li>
+        <li><strong>Date:</strong> {{ event.date_time }}</li>
+        <li><strong>Venue:</strong> {{ event.venue }}</li>
+        <li><strong>Quantity:</strong> {{ quantity }}</li>
+        <li><strong>Total Paid:</strong> ${{ amount }}</li>
+    </ul>
+    <p>Your ticket QR code is attached to this email. Please bring it with you to the event for entry.</p>
+    <p>Enjoy the event!</p>
+{% endblock %}

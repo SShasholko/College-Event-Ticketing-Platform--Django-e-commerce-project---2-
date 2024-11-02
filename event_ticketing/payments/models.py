@@ -31,7 +31,7 @@ class Payment(models.Model):
 
     def generate_qr_code(self):
         # QR code data: adjust as needed
-        qr_data = f"Event: {self.event.title}, Date: {self.event.date_time}, Ticket ID: {self.id}"
+        qr_data = f"Event: {self.event.title}, Date: {self.event.date_time}, Ticket ID: {self.id}, User: {self.user}"
         qr = qrcode.make(qr_data)
 
         # Save QR code to BytesIO buffer

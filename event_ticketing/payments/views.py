@@ -15,6 +15,10 @@ from django.views.decorators.http import require_POST
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+import logging
+from django.core.mail import EmailMessage
+
+
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -53,7 +57,7 @@ def create_checkout_session(request, event_id):
         )
 
         # Save payment information with session.id as stripe_payment_intent_id
-        Payment.objects.create(
+        payment = Payment.objects.create(
             user=request.user,
             event=event,
             amount=amount / 100,  # Save amount in dollars
@@ -61,11 +65,46 @@ def create_checkout_session(request, event_id):
             stripe_payment_intent_id=session.id  # Using session.id here
         )
 
+        send_ticket_email(payment, event)
+
         return JsonResponse({'id': session.id})
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
+
+def send_ticket_email(payment, event):
+    """Send an email with ticket details and QR code after successful payment."""
+    subject = f"Your Ticket for {event.title}"
+    recipient_email = payment.user.email
+    context = {
+        'user': payment.user,
+        'event': event,
+        'quantity': payment.quantity,
+        'amount': payment.amount,
+    }
+    
+    try:
+        # Render the email body
+        message = render_to_string('payments/ticket_email.html', context)
+
+        # Create the email object
+        email = EmailMessage(subject, message, to=[recipient_email])
+        email.content_subtype = 'html'  # Send as HTML email
+
+        # Attach the QR code
+        if payment.qr_code and payment.qr_code.path:
+            email.attach_file(payment.qr_code.path)
+            logging.info(f"Attached QR code for payment {payment.id}")
+        else:
+            logging.warning(f"No QR code found for payment {payment.id}")
+
+        # Send the email
+        email.send()
+        logging.info(f"Email sent to {recipient_email} for event {event.title}")
+
+    except Exception as e:
+        logging.error(f"Failed to send email for payment {payment.id}: {e}")
 
 
 @csrf_exempt
