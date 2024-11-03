@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.conf import settings
 from payments.models import Payment
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
 
 
@@ -85,7 +86,15 @@ def ticket_purchase(request, event_id):
 def profile_view(request):
     # Retrieve events created by the user
     created_events = Event.objects.filter(user=request.user)
+
+    # Separate events into upcoming and past
+    upcoming_events = created_events.filter(date_time__gte=timezone.now()).order_by('date_time')
+    past_events = created_events.filter(date_time__lt=timezone.now()).order_by('-date_time')
     
+    # Calculate total tickets sold for each event and annotate it
+    upcoming_events = upcoming_events.annotate(tickets_sold=Sum('payments__quantity'))
+    past_events = past_events.annotate(tickets_sold=Sum('payments__quantity'))
+
     # Retrieve events the user has purchased tickets for
     purchased_payments = Payment.objects.filter(user=request.user)
     purchased_events = [payment.event for payment in purchased_payments]  # Extract events from payments
@@ -93,6 +102,8 @@ def profile_view(request):
     # Pass both created and purchased events to the template
     context = {
         'created_events': created_events,
+        'upcoming_events': upcoming_events,
+        'past_events': past_events,
         'purchased_events': purchased_events,
         'purchased_payments': purchased_payments,
     }
