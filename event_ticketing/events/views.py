@@ -59,7 +59,18 @@ def event_list(request):
 
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    return render(request, 'events/event_detail.html', {'event': event})
+
+    # Calculate the total tickets sold for the event
+    tickets_sold = event.payments.aggregate(total_sold=Sum('quantity'))['total_sold'] or 0
+    remaining_tickets = event.total_tickets - tickets_sold
+
+    context = {
+        'event': event,
+        'tickets_sold': tickets_sold,
+        'remaining_tickets': remaining_tickets,
+    }
+
+    return render(request, 'events/event_detail.html', context)
 
 
 def ticket_purchase(request, event_id):

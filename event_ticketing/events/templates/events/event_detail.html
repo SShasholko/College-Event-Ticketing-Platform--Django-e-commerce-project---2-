@@ -15,18 +15,20 @@
     <p><strong>Venue:</strong> {{ event.venue }}</p>
     <p><strong>Description:</strong> {{ event.description }}</p>
     <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
-    <p><strong>Tickets Remaining:</strong> {{ event.remaining_tickets }} out of {{ event.total_tickets }}</p>
-
-    <!-- Call to Action: Purchase Tickets (If applicable) -->
-    <p>
-        {% if event.remaining_tickets > 0 %}
-            <a href="{% url 'ticket_purchase' event.id %}">Purchase Tickets</a>
+    <p><strong>Tickets Remaining:</strong> 
+        {% if remaining_tickets > 0 %}
+            {{ remaining_tickets }} out of {{ event.total_tickets }}
         {% else %}
-            <span>Sold Out!</span>
+            <span style="color: red; font-weight: bold;">SOLD OUT</span>
         {% endif %}
     </p>
 
-    <!-- event_detail.html (make sure to include this link) -->
+    <!-- Purchase Tickets (If applicable) -->
+    <p>
+        {% if remaining_tickets > 0 %}
+            <a href="{% url 'ticket_purchase' event.id %}">Purchase Tickets</a>
+        {% endif %}
+    </p>
 
 
     <!-- Link back to event list -->
