@@ -16,11 +16,13 @@
     <p><strong>Description:</strong> {{ event.description }}</p>
     <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
     <p><strong>Tickets Remaining:</strong> 
+        <span id="remaining-tickets">
         {% if remaining_tickets > 0 %}
             {{ remaining_tickets }} out of {{ event.total_tickets }}
         {% else %}
             <span style="color: red; font-weight: bold;">SOLD OUT</span>
         {% endif %}
+    </span>
     </p>
 
     <!-- Purchase Tickets (If applicable) -->

@@ -1,8 +1,10 @@
 from django.urls import path
+
 from . import views
 
 urlpatterns = [
-    path('checkout/<int:event_id>/', views.create_checkout_session, name='checkout'),  
+    path('create-payment-intent/<int:event_id>/', views.create_payment_intent, name='create_payment_intent'),
+   # path('checkout/<int:event_id>/', views.create_checkout_session, name='checkout'),  
     path('webhook/', views.stripe_webhook, name='stripe-webhook'),
 
 

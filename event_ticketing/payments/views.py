@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-
 import stripe
 import json
 from django.conf import settings
@@ -17,60 +16,58 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 import logging
 from django.core.mail import EmailMessage
-
-
+from django.db import transaction 
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 @require_POST
 @login_required
-def create_checkout_session(request, event_id):
-    """Create a Stripe Checkout Session for purchasing an event ticket."""
+def create_payment_intent(request, event_id):
     event = get_object_or_404(Event, id=event_id)
 
     try:
-        # Get quantity from the request data
+        # Get quantity from the POST data
         data = json.loads(request.body)
         quantity = int(data.get('quantity', 1))  # Default to 1 if not provided
         if quantity <= 0:
             return JsonResponse({'error': 'Quantity must be at least 1'}, status=400)
 
-        amount = int(event.ticket_price * quantity * 100)  # Convert total amount to cents
+        # Check if there are enough remaining tickets
+        if event.remaining_tickets < quantity:
+            return JsonResponse({'error': 'Not enough tickets available'}, status=400)
 
-        # Create a Stripe Checkout session
-        session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price_data': {
-                    'currency': 'usd',
-                    'product_data': {
-                        'name': event.title,
-                    },
-                    'unit_amount': int(event.ticket_price * 100),
-                },
-                'quantity': quantity,
-            }],
-            mode='payment',
-            success_url=request.build_absolute_uri('/payments/success/'),
-            cancel_url=request.build_absolute_uri('/payments/cancel/'),
+        amount = int(event.ticket_price * quantity * 100)  # Calculate total amount in cents
+
+        # Create the PaymentIntent with the calculated amount
+        intent = stripe.PaymentIntent.create(
+            amount=amount,
+            currency="usd",
+            metadata={"event_id": event.id, "user_id": request.user.id},
         )
 
-        # Save payment information with session.id as stripe_payment_intent_id
-        payment = Payment.objects.create(
-            user=request.user,
-            event=event,
-            amount=amount / 100,  # Save amount in dollars
-            quantity=quantity,
-            stripe_payment_intent_id=session.id  # Using session.id here
-        )
+        with transaction.atomic():
+            event.remaining_tickets -= quantity
+            event.save()
 
-        send_ticket_email(payment, event)
+            # Save the Payment object
+            payment = Payment.objects.create(
+                user=request.user,
+                event=event,
+                amount=amount / 100,  # in dollars
+                quantity=quantity,
+                stripe_payment_intent_id=intent.id
+            )
 
-        return JsonResponse({'id': session.id})
+        return JsonResponse({
+            "client_secret": intent.client_secret,
+            "updated_remaining_tickets": event.remaining_tickets
+            #"amount": amount / 100  # Send amount in dollars for display if needed
+        })
 
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+        return JsonResponse({"error": str(e)}, status=500)
 
 
 def send_ticket_email(payment, event):

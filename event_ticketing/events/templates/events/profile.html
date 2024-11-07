@@ -8,6 +8,12 @@
     <p><strong>First Name:</strong> {{ user.first_name }}</p>
     <p><strong>Last Name:</strong> {{ user.last_name }}</p>
 
+
+    <a href="{% url 'add_event' %}">
+        <button>Add New Event</button>
+    </a>
+
+
    
     <h2>Your Created Events</h2>
     {% if created_events %}
