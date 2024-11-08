@@ -65,7 +65,7 @@
 /* Sub-heading (H2) */
 .sub-heading, .h2-style {
     font-family: "Red Hat Display", sans-serif;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 40px;
 }
@@ -268,3 +268,46 @@
     font-weight: 500;
     margin: 0 30px 30px 0;
 }
+
+
+/* _________________________________________________________________ */
+
+/* Event Details Styling */
+.event-details {
+    color: #333;
+}
+
+.event-details h2 {
+    font-size: 2em;
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Action Buttons */
+.gradient-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    /* transition: transform 0.2s, box-shadow 0.2s; */
+}
+
+.gradient-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .event-details h2 {
+        font-size: 1.5em;
+    }
+
+    .gradient-btn {
+        font-size: 1em;
+    }
+}
+

@@ -1,40 +1,63 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Event List{% endblock %}
+{% block title %}Event Details{% endblock %}
 
 {% block content %}
-    <h1>{{ event.title }}</h1>
-
-    <!-- Event Image -->
-    {% if event.image %}
-    <img src="{{ event.image.url }}" alt="{{ event.title }}" style="width: 500px;">
-    {% endif %}
-
-    <!-- Event Details -->
-    <p><strong>Date and Time:</strong> {{ event.date_time }}</p>
-    <p><strong>Venue:</strong> {{ event.venue }}</p>
-    <p><strong>Description:</strong> {{ event.description }}</p>
-    <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
-    <p><strong>Tickets Remaining:</strong> 
-        <span id="remaining-tickets">
-        {% if remaining_tickets > 0 %}
-            {{ remaining_tickets }} out of {{ event.total_tickets }}
-        {% else %}
-            <span style="color: red; font-weight: bold;">SOLD OUT</span>
-        {% endif %}
-    </span>
-    </p>
-
-    <!-- Purchase Tickets (If applicable) -->
-    <p>
-        {% if remaining_tickets > 0 %}
-            <a href="{% url 'ticket_purchase' event.id %}">Purchase Tickets</a>
-        {% endif %}
-    </p>
+<div class="container my-5">
+    <div class="card shadow-lg border-0 position-relative">
+        <!-- Event Image with Overlay Text -->
+        <div class="position-relative">
+            {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="card-img-top img-fluid" style="height: 400px; object-fit: cover; border-radius: 10px;">
+            {% endif %}
+        </div>
 
 
-    <!-- Link back to event list -->
-    <p>
-        <a href="{% url 'event_list' %}">Back to Event List</a>
-    </p>
-    {% endblock %}
+
+
+
+<div class="card-body">
+    <div class="row">
+        <!-- Event Details Column (Larger Column) -->
+        <div class="col-md-9">
+            <div class="event-details mb-4">
+                <h2 class="mb-3">{{ event.title }}</h2>
+                <p><i class="fas fa-calendar-alt me-2"></i><strong>Date and Time:</strong> {{ event.date_time|date:"F d, Y h:i A" }}</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i><strong>Venue:</strong> {{ event.venue }}</p>
+                <p><i class="fas fa-info-circle me-2"></i><strong>Description:</strong> {{ event.description }}</p>
+                <p><i class="fas fa-ticket-alt me-2"></i><strong>Ticket Price:</strong> 
+                    {% if event.ticket_price > 0 %}
+                        ${{ event.ticket_price }}
+                    {% else %}
+                        <span class="text-success">Free</span>
+                    {% endif %}
+                </p>
+                <p><strong>Tickets Remaining:</strong> 
+                    <span id="remaining-tickets">
+                    {% if remaining_tickets > 0 %}
+                        {{ remaining_tickets }} out of {{ event.total_tickets }}
+                    {% else %}
+                        <span style="color: red; font-weight: bold;">SOLD OUT</span>
+                    {% endif %}
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Action Buttons Column (Smaller Column) -->
+        <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
+            {% if remaining_tickets > 0 %}
+            <a href="{% url 'ticket_purchase' event.id %}" class="btn gradient-btn mb-3 w-100">Purchase Tickets</a>
+            {% endif %}
+            <a href="{% url 'event_list' %}" class="btn btn-outline-secondary w-100">Back to Event List</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}
