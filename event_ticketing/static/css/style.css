@@ -239,3 +239,32 @@
         margin-bottom: 10px;
     }
 }
+/* ________________________________________________________ */
+
+
+/* Gradient Button Styles */
+.random-gradient-btn {
+    font-weight: bold;
+    padding: 10px 40px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+
+/* Set a fixed size for event images */
+.event-image {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    object-fit: cover;
+    border-radius: 8px;
+}
+.event-title{
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.4em;
+    font-weight: 500;
+    margin: 0 30px 30px 0;
+}

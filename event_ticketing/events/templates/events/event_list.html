@@ -1,57 +1,117 @@
 {% extends 'events/base.html' %}
-
+{% load static %}
 {% block title %}Event List{% endblock %}
 
 {% block content %}
-    <h1>Upcoming Events</h1>
-    
+<div class="container my-5">
+    <div class="text-center mb-4 h2-style">
+        <h2>Upcoming Events</h2>
+    </div>
 
-        <!-- Form for searching and filtering by category -->
-        <form method="GET" action="{% url 'event_list' %}">
-            <!-- Search Input -->
-            <input type="text" name="search" placeholder="Search events" value="{{ search_query }}">
-            
-            <!-- Category Dropdown -->
-            <select name="category">
-                <option value="">All Categories</option>
-                {% for category in categories %}
-                    <option value="{{ category.id }}" {% if category.id == category_filter %}selected{% endif %}>
-                        {{ category.name }}
-                    </option>
-                {% endfor %}
-            </select>
-            
-            <button type="submit">Search</button>
+<!-- Responsive Search and Filter Form -->
+<form method="GET" action="{% url 'event_list' %}" class="row g-2 mb-4 justify-content-center align-items-center">
+    <!-- Search Input -->
+    <div class="col-12 col-sm-6 col-md-4">
+        <input type="text" name="search" class="form-control" placeholder="Search events" value="{{ search_query }}">
+    </div>
 
-        <!-- Clear Search Button -->
-        <a href="{% url 'event_list' %}">
-            <button type="button">Clear Search</button>
-        </a>
+    <!-- Category Dropdown -->
+    <div class="col-12 col-sm-4 col-md-3">
+        <select name="category" class="form-select">
+            <option value="">All Categories</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == category_filter %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Search Button -->
+    <div class="col-12 col-sm-4 col-md-2 d-grid">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+
+    <!-- Clear Button -->
+    <div class="col-12 col-sm-4 col-md-2 d-grid">
+        <a href="{% url 'event_list' %}" class="btn btn-secondary">Clear Search</a>
+    </div>
+</form>
 
 
-        </form>
-
-
-
-    <ul>
+    <!-- Event List -->
+    <div class="row">
         {% for event in events %}
-        <li>
-            <!-- Link to Event Details Page -->
-            <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
-            
-            <!-- Add Image to Event List -->
-            {% if event.image %}
-                <img src="{{ event.image.url }}" alt="{{ event.title }}" style="width: 300px;">
-            {% endif %}
+        <div class="col-12 mb-4">
+            <div class="card shadow-lg h-100">
+                <div class="row g-0">
+                    <!-- Event Image -->
+                    <div class="col-md-4">
+                        {% if event.image %}
+                        <a href="{% url 'event_detail' event.id %}">
+                            <img src="{{ event.image.url }}" class="img-fluid rounded-start event-image" alt="{{ event.title }}"></a>
+                        {% else %}
+                        <a href="{% url 'event_detail' event.id %}">
+                            <img src="{% static 'images/default-event.avif' %}" class="img-fluid rounded-start event-image" alt="Default Event"></a>
+                        {% endif %}
+                    </div>
 
-            <!-- Display Event Details -->
-            <strong>{{ event.title }}</strong> - {{ event.date_time }}<br>
-            {{ event.description }}<br>
-            Tickets Remaining: {{ event.remaining_tickets }}
-        </li>
+                    <!-- Event Details -->
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title event-title">{{ event.title }}</h3>
+                            <p class="card-text">{{ event.description|truncatewords:50 }}</p>
+                            <p><strong>Date:</strong> {{ event.date_time|date:"F d, Y h:i A" }}</p>
+                            <p><strong>Tickets Remaining:</strong> {{ event.remaining_tickets }}</p>
+
+                            <!-- View Details Button -->
+                            <div class="d-flex justify-content-end">
+                                <a href="{% url 'event_detail' event.id %}" class="btn random-gradient-btn mt-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% empty %}
-        <p>No upcoming events.</p>
+        <div class="col-12">
+            <p class="text-center">No upcoming events.</p>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+</div>
 
-    {% endblock %}
+
+<script>
+    // Array of gradient styles
+    const gradients = [
+        'linear-gradient(to right, #ff6f61, #ff9472)',
+        'linear-gradient(to right, #6b5b95, #b8a9c9)',
+        'linear-gradient(to right, #88b04b, #d0e17d)',
+        'linear-gradient(to right, #f7cac9, #f3a683)',
+        'linear-gradient(to right, #92a8d1, #34ace0)',
+        'linear-gradient(to right, #ffb347, #ffcc33)',
+        'linear-gradient(to right, #d4a5a5, #ff8c94)',
+        'linear-gradient(to right, #b565a7, #8e44ad)',
+        'linear-gradient(to right, #009688, #48c9b0)',
+        'linear-gradient(to right, #ff8c00, #ff6347)'
+    ];
+
+    // Get all buttons with the class 'random-gradient-btn'
+    const buttons = document.querySelectorAll('.random-gradient-btn');
+
+    // Assign a random gradient style to each button
+    buttons.forEach(button => {
+        const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+        button.style.background = randomGradient;
+        button.style.border = 'none';
+        button.style.color = '#fff';  // Ensure text is white for readability
+        button.style.transition = 'background 0.3s ease';  // Smooth transition effect
+    });
+</script>
+
+
+
+
+
+{% endblock %}
