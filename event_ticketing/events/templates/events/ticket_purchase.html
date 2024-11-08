@@ -4,38 +4,52 @@
 {% block title %}Purchase Tickets{% endblock %}
 
 {% block content %}
-<div style="max-width: 600px; margin: 0 auto;">
-    <h1>Purchase Tickets for {{ event.title }}</h1>
-    <p>Price per Ticket: ${{ event.ticket_price }}</p>
+<div class="container d-flex justify-content-center align-items-center  mt-5 mb-5" style="min-height: 80vh;">
+    <div class="card-purchase shadow p-4" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <h2 class="text-center mb-4">Purchase Tickets for {{ event.title }}</h2>
+        <p class="text-center mb-4"><strong>Price per Ticket:</strong> ${{ event.ticket_price }}</p>
 
-    <!-- Quantity Selector -->
-    <label for="quantity">Select Quantity:</label>
-    <input type="number" id="quantity" name="quantity" min="1" value="1" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+        <!-- Quantity Selector -->
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Select Quantity:</label>
+            <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1">
+        </div>
 
-    <!-- Display Total Price -->
-    <p>Total Price: $<span id="total_price">{{ event.ticket_price }}</span></p>
+        <!-- Display Total Price -->
+        <p class="text-center mb-4"><strong>Total Price:</strong> $<span id="total_price">{{ event.ticket_price }}</span></p>
 
-    <!-- Payment Form -->
-    <form id="payment-form">
-        {% csrf_token %}
+        <!-- Payment Form -->
+        <form id="payment-form">
+            {% csrf_token %}
 
-        <!-- Billing Details -->
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" value="{{ request.user.get_full_name }}" style="width: 100%; padding: 8px; margin-bottom: 15px;" required>
+            <!-- Billing Details -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name:</label>
+                <input type="text" id="name" name="name" value="{{ request.user.get_full_name }}" class="form-control" required>
+            </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{ request.user.email }}" style="width: 100%; padding: 8px; margin-bottom: 15px;" required>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" value="{{ request.user.email }}" class="form-control" required>
+            </div>
 
-        <!-- Stripe Card Element -->
-        <div id="card-element" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px;"></div>
-        <div id="card-errors" role="alert" style="color: red; margin-bottom: 10px;"></div> <!-- Error display -->
+            <!-- Stripe Card Element -->
+            <div id="card-element" class="mb-3 p-3 border rounded" style="border: 1px solid #ccc;"></div>
+            <div id="card-errors" role="alert" class="text-danger mb-3"></div>
 
-        <!-- Purchase Button -->
-        <button type="button" id="submit-button" style="width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Purchase Ticket</button>
-    </form>
+            <!-- Purchase Button -->
+            <button type="button" id="submit-button" class="btn btn-gradient-purchase w-100 py-2">Purchase Ticket</button>
+        </form>
 
-    <a href="{% url 'event_detail' event.id %}">Back to Event Details</a>
+        <!-- Back to Event Details Link -->
+        <div class="text-center mt-4">
+            <a href="{% url 'event_detail' event.id %}" class="btn btn-outline-dark w-100 py-2">Back to Event Details</a>
+        </div>
+    </div>
 </div>
+
+
+
 
 <!-- Include Stripe JS library -->
 <script src="https://js.stripe.com/v3/"></script>

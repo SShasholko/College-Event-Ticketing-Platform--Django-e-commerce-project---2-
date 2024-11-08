@@ -72,6 +72,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
 
 EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
 
