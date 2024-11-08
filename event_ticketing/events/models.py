@@ -42,5 +42,6 @@ class Ticket(models.Model):
     quantity = models.PositiveIntegerField()
     purchased_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+def __str__(self):
+    return f"{self.purchaser_name} - {self.event.title} - {self.quantity} tickets"
+

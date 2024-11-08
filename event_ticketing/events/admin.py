@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Event
+from .models import Category, Event, Ticket
 
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
@@ -14,3 +14,8 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(Category)
+
+@admin.register(Ticket)
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ('event', 'purchaser_name', 'email', 'quantity', 'purchased_at')
+    search_fields = ('purchaser_name', 'email')

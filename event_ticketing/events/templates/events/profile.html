@@ -63,6 +63,7 @@
     {% for payment in purchased_payments %}
         <li>
             <strong>Event Title:</strong> {{ payment.event.title }}<br>
+            <strong>Date and Time:</strong> {{ payment.event.date_time|date:"F j, Y, g:i a" }}<br>
             <strong>Amount:</strong> ${{ payment.amount }}<br>
             <strong>Quantity:</strong> {{ payment.quantity }}<br>
             {% if payment.qr_code %}

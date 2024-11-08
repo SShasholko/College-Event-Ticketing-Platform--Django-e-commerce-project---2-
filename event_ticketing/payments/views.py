@@ -59,11 +59,11 @@ def create_payment_intent(request, event_id):
                 quantity=quantity,
                 stripe_payment_intent_id=intent.id
             )
+            send_ticket_email(payment, event)
 
         return JsonResponse({
             "client_secret": intent.client_secret,
             "updated_remaining_tickets": event.remaining_tickets
-            #"amount": amount / 100  # Send amount in dollars for display if needed
         })
 
     except Exception as e:

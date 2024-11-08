@@ -7,7 +7,7 @@
     <a href="{% provider_login_url 'google' %}">Log in with Google</a>
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}" />
         {{ form.as_p }}
         <button type="submit">Log In</button>
     </form>
