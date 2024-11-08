@@ -43,7 +43,7 @@ def create_payment_intent(request, event_id):
         # Create the PaymentIntent with the calculated amount
         intent = stripe.PaymentIntent.create(
             amount=amount,
-            currency="usd",
+            currency="gbp",
             metadata={"event_id": event.id, "user_id": request.user.id},
         )
 

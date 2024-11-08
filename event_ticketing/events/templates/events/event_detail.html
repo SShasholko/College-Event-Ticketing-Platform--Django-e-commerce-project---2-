@@ -27,7 +27,7 @@
                 <p><i class="fas fa-info-circle me-2"></i><strong>Description:</strong> {{ event.description }}</p>
                 <p><i class="fas fa-ticket-alt me-2"></i><strong>Ticket Price:</strong> 
                     {% if event.ticket_price > 0 %}
-                        ${{ event.ticket_price }}
+                        £{{ event.ticket_price }}
                     {% else %}
                         <span class="text-success">Free</span>
                     {% endif %}

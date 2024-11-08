@@ -7,7 +7,7 @@
 <div class="container d-flex justify-content-center align-items-center  mt-5 mb-5" style="min-height: 80vh;">
     <div class="card-purchase shadow p-4" style="max-width: 600px; width: 100%; border-radius: 10px;">
         <h2 class="text-center mb-4">Purchase Tickets for {{ event.title }}</h2>
-        <p class="text-center mb-4"><strong>Price per Ticket:</strong> ${{ event.ticket_price }}</p>
+        <p class="text-center mb-4"><strong>Price per Ticket:</strong> £{{ event.ticket_price }}</p>
 
         <!-- Quantity Selector -->
         <div class="mb-3">
@@ -16,7 +16,7 @@
         </div>
 
         <!-- Display Total Price -->
-        <p class="text-center mb-4"><strong>Total Price:</strong> $<span id="total_price">{{ event.ticket_price }}</span></p>
+        <p class="text-center mb-4"><strong>Total Price:</strong> £<span id="total_price">{{ event.ticket_price }}</span></p>
 
         <!-- Payment Form -->
         <form id="payment-form">
