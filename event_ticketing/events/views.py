@@ -14,7 +14,7 @@ from django.db.models import Sum
 def home(request):
     # Fetch the three soonest events
     current_time = timezone.now()
-    soonest_events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')[:3]
+    soonest_events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')[:6]
 
     context = {
         'soonest_events': soonest_events,

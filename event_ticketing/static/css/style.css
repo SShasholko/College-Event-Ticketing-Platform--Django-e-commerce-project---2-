@@ -1,0 +1,241 @@
+/* Logo Image Styling */
+.logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    color: #6c757d;
+}
+
+
+/* Full-screen background image */
+.hero-section {
+    background: url('../images/default-event.avif') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    margin-bottom: 50px;
+}
+
+/* Overlay to make text more readable */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+/* Hero content styling */
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Main heading (H1) */
+.main-heading {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 6rem;
+    line-height: 0.97em;
+    font-weight: 700;
+    margin-bottom: 70px;
+}
+
+/* Sub-heading (H2) */
+.sub-heading, .h2-style {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-heading {
+        font-size: 2.5em;
+    }
+
+    .sub-heading {
+        font-size: 1.2em;
+    }
+}
+
+
+/* Call-to-Action Button Styles */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33, #4caf50);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Button Hover Effect */
+.cta-button:hover, .colorful-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Button Size */
+@media (max-width: 768px) {
+    .cta-button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+}
+
+
+.event-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+/* Gradient Button Styles */
+.gradient-btn {
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gradient-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Predefined Gradient Classes */
+.gradient-1 {
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33);
+}
+
+.gradient-2 {
+    background: linear-gradient(45deg, #36d1dc, #5b86e5);
+}
+
+.gradient-3 {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+}
+
+.gradient-4 {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.gradient-5 {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+}
+
+.gradient-6 {
+    background: linear-gradient(45deg, #30cfd0, #330867);
+}
+
+.gradient-7 {
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+}
+
+/* Colorful Gradient Button */
+.colorful-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    /* font-weight: bold; */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff6f61, #ff9a9e, #ff6f61);
+    background-size: 200% 200%;
+    box-shadow: 0 8px 15px rgba(255, 105, 135, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 50px;
+}
+
+
+/* Active Effect */
+.colorful-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(255, 105, 135, 0.3);
+}
+
+/* Custom Footer Styles */
+.custom-footer {
+    background-color: #1a1a1a;  /* Dark background color */
+    color: #f0f0f0;             /* Light text color for contrast */
+    padding: 5px 0;
+    margin-top: 40px;
+}
+
+/* Footer Logo */
+.footer-logo-img {
+    max-width: 60px;
+    /* margin-bottom: 10px; */
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    gap: 50px;
+}
+
+.footer-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff9a9e;  /* Matches your gradient button colors */
+}
+
+/* Footer Text */
+.footer-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+}
