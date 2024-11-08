@@ -4,7 +4,19 @@
 {% block title %}Payment Successful{% endblock %}
 
 {% block content %}
-<h1>Payment Successful!</h1>
-<p>Thank you for your purchase. Your payment was processed successfully.</p>
-<a href="{% url 'event_list' %}">Return to Event List</a>
+<div class="success-container">
+    <div class="success-card shadow-lg p-4 text-center">
+        <!-- Success Icon -->
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">Thank you for your purchase. Your payment was processed successfully.</p>
+
+        <!-- View Tickets Button -->
+        <a href="{% url 'profile' %}" class="btn success-view-tickets-btn">View Your Tickets</a>
+
+        <!-- Return to Event List Button -->
+        <a href="{% url 'event_list' %}" class="btn success-return-btn">Return to Event List</a>
+    </div>
+</div>
 {% endblock %}
+

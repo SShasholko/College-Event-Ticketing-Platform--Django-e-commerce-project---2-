@@ -195,7 +195,7 @@
     background-color: #1a1a1a;  /* Dark background color */
     color: #f0f0f0;             /* Light text color for contrast */
     padding: 5px 0;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 /* Footer Logo */
@@ -393,4 +393,210 @@
 .btn-outline-dark:hover {
     background: #333;
     color: #fff;
+}
+
+
+/* _________________________________________________ */
+
+
+/* Profile Page Styles */
+.profile-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-welcome {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+.profile-info {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.profile-add-btn {
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.profile-add-btn:hover {
+    background: linear-gradient(45deg, #f06595, #ff6b6b);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+.events-subtitle {
+    font-size: 1.4rem;
+    color: #495057;
+    margin-bottom: 10px;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+/* QR Code Image */
+.qr-code-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+/* QR Code Container */
+.qr-code-container {
+    flex-shrink: 0;
+    margin-left: 20px;
+    text-align: right;
+}
+
+/* List Group Item Styles */
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Profile Buttons */
+.btn.profile-section-btn {
+
+    color: #495057;
+    border: 1px solid #ff4081;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.btn.profile-section-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+       background: linear-gradient(135deg, #fc8bb0, #fac6d7); 
+       color: white;
+       border: none;
+}
+
+
+/* ____________________________________________________ */
+/* Success Page Styles */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: linear-gradient(135deg, #f8a1d7 0%, #cbdaf5 100%);
+    color: #fff;
+}
+
+.success-card {
+    max-width: 500px;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 15px;
+    animation: pop 0.5s ease-in-out;
+}
+
+.success-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.success-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.success-view-tickets-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.success-return-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.success-view-tickets-btn:hover,
+.success-return-btn:hover {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* Animation */
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
