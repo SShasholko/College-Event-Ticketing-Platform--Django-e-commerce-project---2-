@@ -22,7 +22,7 @@ from django.urls import path
 from django.views.generic.base import RedirectView
 from . import views
 from events import views
-from events.views import profile_view, edit_event, delete_event
+from events.views import profile_view, edit_event, delete_event, logout_view, logout_confirm
 from django.contrib.auth import views as auth_views 
 # from event.views import profile_view, edit_event, delete_event
 # from event_ticketing.event.views import profile_view, edit_event, delete_event
@@ -42,6 +42,9 @@ urlpatterns = [
      
     # path('payments/', include('payments.urls')),
     path('payments/', include('payments.urls')),
+
+    path('logout/', logout_view, name='logout'),
+    path('logout/confirm/', logout_confirm, name='logout_confirm'),
 
     path('profile/', views.profile_view, name='profile'),
     path('add-event/', views.add_event, name='add_event'),

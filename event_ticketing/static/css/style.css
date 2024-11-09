@@ -744,3 +744,114 @@ main {
     background: linear-gradient(45deg, #616161, #212121);
     color: #fff;
 }
+
+
+/* ________________________________________________________________ */
+
+/* Custom styles for add_event.html */
+.add-event-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.add-event-title{
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add-event-form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.add-event-form input,
+.add-event-form textarea,
+.add-event-form select {
+    border-radius: 5px;
+}
+
+.add-event-form button {
+    background: linear-gradient(45deg, #4caf50, #00c853);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-event-form button:hover {
+    background: linear-gradient(45deg, #388e3c, #00796b);
+    color: #fff;
+}
+
+.back-to-profile-btn {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.back-to-profile-btn:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}
+/* ________________________________________________ */
+
+.logout-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-title{
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.logout-btn-danger {
+    background: linear-gradient(45deg, #e53935, #d32f2f);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.logout-btn-danger:hover {
+    background: linear-gradient(45deg, #c62828, #b71c1c);
+    color: #fff;
+}
+
+.logout-btn-secondary {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.logout-btn-secondary:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}

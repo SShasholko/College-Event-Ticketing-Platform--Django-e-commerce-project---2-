@@ -9,6 +9,17 @@
             </div>
         {% endfor %}
     </div>
+    <!-- Auto-close script -->
+    <script>
+        // Automatically close the alert after 5 seconds (5000 milliseconds)
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                // Using Bootstrap's alert dismiss method
+                bootstrap.Alert.getOrCreateInstance(alert).close();
+            });
+        }, 5000);
+    </script>
 {% endif %}
 
 <!-- base.html -->
@@ -51,7 +62,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'event_list' %}">Events</a></li>
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
+                            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Log Out</a></li>
                             <li class="nav-item">
                                 <span class="nav-link">Hi, {{ user.username }}!</span>
                             </li>

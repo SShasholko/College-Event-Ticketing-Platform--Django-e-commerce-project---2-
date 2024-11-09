@@ -8,6 +8,7 @@ from django.conf import settings
 from payments.models import Payment
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
+from django.contrib.auth import logout
 
 
 
@@ -157,5 +158,15 @@ def delete_event(request, event_id):
     return render(request, 'events/delete_event.html', {'event': event})
 
 
+
+def logout_view(request):
+    return render(request, 'account/logout.html')
+
+
+def logout_confirm(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, "You have successfully logged out.")
+        return redirect('home')
 
 

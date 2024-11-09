@@ -1,0 +1,15 @@
+<!-- templates/account/logout.html -->
+{% extends "events/base.html" %}
+
+{% block title %}Log Out{% endblock %}
+
+{% block content %}
+<div class="logout-container">
+    <h2 class="logout-title">Are you sure you want to log out?</h2>
+    <form method="post" action="{% url 'logout_confirm' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn logout-btn-danger">Yes, Log Out</button>
+        <a href="{% url 'home' %}" class="btn logout-btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

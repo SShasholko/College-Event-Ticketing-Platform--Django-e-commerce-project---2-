@@ -25,3 +25,12 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['title', 'description', 'date_time', 'venue', 'ticket_price', 'total_tickets', 'category', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter event title'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter event description'}),
+            'venue': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter event venue'}),
+            'ticket_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter ticket price'}),
+            'total_tickets': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter total tickets'}),
+            'category': forms.Select(attrs={'class': 'form-select'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
