@@ -141,6 +141,7 @@ def edit_event(request, event_id):
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
+            messages.success(request, f'The event "{event.title}" was successfully updated.')
             return redirect('profile')  # Redirect to the profile page
     else:
         form = EventForm(instance=event)
@@ -151,7 +152,7 @@ def delete_event(request, event_id):
     event = get_object_or_404(Event, id=event_id, user=request.user)
     if request.method == 'POST':
         event.delete()
-        messages.success(request, "Event deleted successfully!")
+        messages.success(request, f'The event "{event.title}" was successfully deleted.')
         return redirect('profile')  # Redirect to the profile page
     return render(request, 'events/delete_event.html', {'event': event})
 
