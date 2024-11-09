@@ -179,9 +179,9 @@ main {
 /* Colorful Gradient Button */
 .colorful-btn {
     display: inline-block;
-    padding: 15px 40px;
-    font-size: 1.3rem;
-    /* font-weight: bold; */
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -189,7 +189,6 @@ main {
     background-size: 200% 200%;
     box-shadow: 0 8px 15px rgba(255, 105, 135, 0.3);
     transition: all 0.3s ease;
-    text-transform: uppercase;
     text-decoration: none;
     margin-bottom: 50px;
 }
@@ -308,7 +307,7 @@ main {
 }
 
 /* Action Buttons */
-.gradient-btn {
+.gradient-btn-purchase {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: #fff;
     border: none;
@@ -317,7 +316,7 @@ main {
     /* transition: transform 0.2s, box-shadow 0.2s; */
 }
 
-.gradient-btn:hover {
+.gradient-btn-purchase:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     color: #fff;
@@ -854,4 +853,46 @@ main {
 .logout-btn-secondary:hover {
     background: linear-gradient(45deg, #616161, #212121);
     color: #fff;
+}
+
+
+/* 404 Page Custom Styles */
+.display-3 {
+    font-size: 5rem;
+}
+
+.text-danger {
+    color: #ff4d4d;
+}
+
+.btn-gradient-404-home {
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-404-home:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+}
+
+.btn-gradient-404-events {
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-404-events:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: translateY(-3px);
 }

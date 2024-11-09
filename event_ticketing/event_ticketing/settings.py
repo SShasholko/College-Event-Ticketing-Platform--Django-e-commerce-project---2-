@@ -35,6 +35,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+handler404 = 'event_ticketing.views.custom_404'
+
 SITE_ID = 2
 
 # Application definition

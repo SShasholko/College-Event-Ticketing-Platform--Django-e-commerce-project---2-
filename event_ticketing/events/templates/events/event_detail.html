@@ -26,11 +26,7 @@
                 <p><i class="fas fa-map-marker-alt me-2"></i><strong>Venue:</strong> {{ event.venue }}</p>
                 <p><i class="fas fa-info-circle me-2"></i><strong>Description:</strong> {{ event.description }}</p>
                 <p><i class="fas fa-ticket-alt me-2"></i><strong>Ticket Price:</strong> 
-                    {% if event.ticket_price > 0 %}
                         £{{ event.ticket_price }}
-                    {% else %}
-                        <span class="text-success">Free</span>
-                    {% endif %}
                 </p>
                 <p><strong>Tickets Remaining:</strong> 
                     <span id="remaining-tickets">
@@ -47,7 +43,7 @@
         <!-- Action Buttons Column (Smaller Column) -->
         <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
             {% if remaining_tickets > 0 %}
-            <a href="{% url 'ticket_purchase' event.id %}" class="btn gradient-btn mb-3 w-100">Purchase Tickets</a>
+            <a href="{% url 'ticket_purchase' event.id %}" class="btn gradient-btn-purchase mb-3 w-100">Purchase Tickets</a>
             {% endif %}
             <a href="{% url 'event_list' %}" class="btn btn-outline-secondary w-100">Back to Event List</a>
         </div>
