@@ -129,6 +129,7 @@ def add_event(request):
             event = form.save(commit=False)
             event.user = request.user  # Assign the event to the logged-in user
             event.save()
+            messages.success(request, "Your event has been successfully added!")
             return redirect('profile')  # Redirect to profile page after event creation
     else:
         form = EventForm()
