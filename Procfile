@@ -1,1 +1,1 @@
-web: gunicorn event_ticketing.wsgi:app
+web: gunicorn event_ticketing.wsgi:application
