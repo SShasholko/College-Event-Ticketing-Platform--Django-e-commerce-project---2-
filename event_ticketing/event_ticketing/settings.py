@@ -122,7 +122,7 @@ WSGI_APPLICATION = 'event_ticketing.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Password validation
@@ -182,6 +182,7 @@ STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok-free.app',
+    'https://*.herokuapp.com',
 ]
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
