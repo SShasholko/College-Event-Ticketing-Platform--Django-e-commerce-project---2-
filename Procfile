@@ -1,1 +1,1 @@
-web: gunicorn event_ticketing.wsgi:application --log-file -
+web: gunicorn event_ticketing.event_ticketing.wsgi:application --log-file -
