@@ -21,27 +21,22 @@ class Payment(models.Model):
         return f'Payment {self.id} - {self.amount} by {self.user}'
     
     def save(self, *args, **kwargs):
-        # Save the instance first to ensure it has an ID
         super().save(*args, **kwargs)
         
-        # Only generate QR code if it does not already exist
         if not self.qr_code:
             self.generate_qr_code()
 
-
     def generate_qr_code(self):
-        # QR code data: adjust as needed
+        """Generates a QR code containing event details and ticket information, saves it as a PNG image file, and updates the ticket's QR code field without saving the entire instance."""
+        
         qr_data = f"Event: {self.event.title}, Date: {self.event.date_time}, Ticket ID: {self.id}, User: {self.user}"
         qr = qrcode.make(qr_data)
 
-        # Save QR code to BytesIO buffer
         buffer = BytesIO()
         qr.save(buffer, format='PNG')
         buffer.seek(0)
 
-        # Save to qr_code field
         filename = f'qr_code_{self.id}.png'
         self.qr_code.save(filename, File(buffer), save=False)
         super().save(update_fields=['qr_code'])
-        # Confirm file has been saved
 

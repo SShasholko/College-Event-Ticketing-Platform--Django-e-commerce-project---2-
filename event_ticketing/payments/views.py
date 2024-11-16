@@ -25,22 +25,20 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @require_POST
 @login_required
 def create_payment_intent(request, event_id):
+    """Creates a Stripe PaymentIntent for ticket purchase, verifies quantity and ticket availability, updates the remaining tickets, and records the payment while handling errors and sending a confirmation email."""
     event = get_object_or_404(Event, id=event_id)
 
     try:
-        # Get quantity from the POST data
         data = json.loads(request.body)
-        quantity = int(data.get('quantity', 1))  # Default to 1 if not provided
+        quantity = int(data.get('quantity', 1))
         if quantity <= 0:
             return JsonResponse({'error': 'Quantity must be at least 1'}, status=400)
 
-        # Check if there are enough remaining tickets
         if event.remaining_tickets < quantity:
             return JsonResponse({'error': 'Not enough tickets available'}, status=400)
 
-        amount = int(event.ticket_price * quantity * 100)  # Calculate total amount in cents
+        amount = int(event.ticket_price * quantity * 100)
 
-        # Create the PaymentIntent with the calculated amount
         intent = stripe.PaymentIntent.create(
             amount=amount,
             currency="gbp",
@@ -51,11 +49,10 @@ def create_payment_intent(request, event_id):
             event.remaining_tickets -= quantity
             event.save()
 
-            # Save the Payment object
             payment = Payment.objects.create(
                 user=request.user,
                 event=event,
-                amount=amount / 100,  # in dollars
+                amount=amount / 100,
                 quantity=quantity,
                 stripe_payment_intent_id=intent.id
             )
@@ -82,21 +79,16 @@ def send_ticket_email(payment, event):
     }
     
     try:
-        # Render the email body
         message = render_to_string('payments/ticket_email.html', context)
-
-        # Create the email object
         email = EmailMessage(subject, message, to=[recipient_email])
-        email.content_subtype = 'html'  # Send as HTML email
+        email.content_subtype = 'html'
 
-        # Attach the QR code
         if payment.qr_code and payment.qr_code.path:
             email.attach_file(payment.qr_code.path)
             logging.info(f"Attached QR code for payment {payment.id}")
         else:
             logging.warning(f"No QR code found for payment {payment.id}")
 
-        # Send the email
         email.send()
         logging.info(f"Email sent to {recipient_email} for event {event.title}")
 
@@ -119,7 +111,6 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         return JsonResponse({'error': 'Invalid signature'}, status=400)
 
-    # Handle the event
     if event['type'] == 'payment_intent.succeeded':
         intent = event['data']['object']
     

@@ -9,8 +9,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  
     title = models.CharField(max_length=255)
@@ -21,13 +19,10 @@ class Event(models.Model):
     total_tickets = models.IntegerField()
     remaining_tickets = models.IntegerField()
     image = models.ImageField(upload_to='event_images/', null=True, blank=True)
-
-    #    Link to category
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)  
 
     def save(self, *args, **kwargs):
-        # When creating a new event, set remaining_tickets to total_tickets
-        if not self.pk:  # Only set this when the event is first created
+        if not self.pk:
             self.remaining_tickets = self.total_tickets
         super().save(*args, **kwargs)
 

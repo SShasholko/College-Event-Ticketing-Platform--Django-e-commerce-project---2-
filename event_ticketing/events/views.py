@@ -13,7 +13,7 @@ from django.contrib.auth import logout
 
 
 def home(request):
-    # Fetch the three soonest events
+    """Renders the 'home.html' template with the 6 soonest upcoming events and the current year."""
     current_time = timezone.now()
     soonest_events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')[:6]
 
@@ -25,27 +25,19 @@ def home(request):
     return render(request, 'events/home.html', context)
 
 
-
-# Create your views here.
 def event_list(request):
-    # Get the search query and category filter from the request
+    """Displays a list of upcoming events filtered by search query and category, and provides all categories for user selection in the template."""
     search_query = request.GET.get('search', '')
     category_filter = request.GET.get('category', None)
-
     current_time = timezone.now()
-
     events = Event.objects.filter(date_time__gte=current_time).order_by('date_time')
 
-
-     # If there is a search query, filter events by title (case-insensitive)
     if search_query:
         events = events.filter(title__icontains=search_query)
 
-    
     if category_filter:
         events = events.filter(category_id=category_filter)
     
-    # Get all categories for the dropdown menu
     categories = Category.objects.all()
 
     context = {
@@ -55,13 +47,13 @@ def event_list(request):
         'category_filter': category_filter,
     }
 
-    # return render(request, 'events/event_list.html', {'events': events})
     return render(request, 'events/event_list.html', context)
 
+
 def event_detail(request, event_id):
+    """Fetches event details by ID, calculates tickets sold and remaining tickets, and renders the 'event_detail.html' template with this information."""
     event = get_object_or_404(Event, id=event_id)
 
-    # Calculate the total tickets sold for the event
     tickets_sold = event.payments.aggregate(total_sold=Sum('quantity'))['total_sold'] or 0
     remaining_tickets = event.total_tickets - tickets_sold
 
@@ -73,45 +65,40 @@ def event_detail(request, event_id):
 
     return render(request, 'events/event_detail.html', context)
 
+
 @login_required
 def ticket_purchase(request, event_id):
+    """Handles ticket purchase for a specific event, processes form submission, calculates the total price, and renders the 'ticket_purchase.html' template with the event details and Stripe public key."""
     event = get_object_or_404(Event, id=event_id)
 
     if request.method == 'POST':
         form = TicketPurchaseForm(request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
-            ticket.event = event  # Assign the event to the ticket
+            ticket.event = event  
             ticket.save()
-            return redirect('event_detail', event_id=event.id)  # Redirect to the event detail page after purchase
+            return redirect('event_detail', event_id=event.id)
     else:
         form = TicketPurchaseForm(initial={'event': event})
 
-    quantity = form.data.get('quantity', 1)  # Get the quantity from the form data
+    quantity = form.data.get('quantity', 1)
     quantity = int(quantity) if quantity else 1
-    total_price = quantity * event.ticket_price  # Calculate the total price
+    total_price = quantity * event.ticket_price
 
     return render(request, 'events/ticket_purchase.html', {'form': form, 'event': event, 'price': event.ticket_price, 'total_price': total_price, 'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY})
 
 
 @login_required
 def profile_view(request):
-    # Retrieve events created by the user
+    """Displays the user profile with their created events (upcoming and past, including ticket sales) and a list of events they have purchased tickets for, rendering the 'profile.html' template with this data."""
     created_events = Event.objects.filter(user=request.user)
-
-    # Separate events into upcoming and past
     upcoming_events = created_events.filter(date_time__gte=timezone.now()).order_by('date_time')
     past_events = created_events.filter(date_time__lt=timezone.now()).order_by('-date_time')
-    
-    # Calculate total tickets sold for each event and annotate it
     upcoming_events = upcoming_events.annotate(tickets_sold=Sum('payments__quantity'))
     past_events = past_events.annotate(tickets_sold=Sum('payments__quantity'))
-
-    # Retrieve events the user has purchased tickets for
     purchased_payments = Payment.objects.filter(user=request.user)
-    purchased_events = [payment.event for payment in purchased_payments]  # Extract events from payments
+    purchased_events = [payment.event for payment in purchased_payments]  
 
-    # Pass both created and purchased events to the template
     context = {
         'created_events': created_events,
         'upcoming_events': upcoming_events,
@@ -123,14 +110,15 @@ def profile_view(request):
 
 
 def add_event(request):
+    """Handles the creation of a new event, processes the submitted form, saves the event with the current user as the creator, and renders the 'add_event.html' template for form input."""
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             event = form.save(commit=False)
-            event.user = request.user  # Assign the event to the logged-in user
+            event.user = request.user
             event.save()
             messages.success(request, "Your event has been successfully added!")
-            return redirect('profile')  # Redirect to profile page after event creation
+            return redirect('profile')
     else:
         form = EventForm()
 
@@ -138,33 +126,40 @@ def add_event(request):
 
 
 def edit_event(request, event_id):
-    event = get_object_or_404(Event, id=event_id, user=request.user)  # Ensure the user can only edit their events
+    """"Allows the event creator to edit an existing event, updates the event details upon form submission, and renders the 'edit_event.html' template with the event form."""
+    event = get_object_or_404(Event, id=event_id, user=request.user)  
+
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
             messages.success(request, f'The event "{event.title}" was successfully updated.')
-            return redirect('profile')  # Redirect to the profile page
+            return redirect('profile')
     else:
         form = EventForm(instance=event)
     return render(request, 'events/edit_event.html', {'form': form})
 
 
 def delete_event(request, event_id):
+    """Handles the deletion of an event by its creator, removes the event upon form submission, and renders the 'delete_event.html' template for confirmation."""
     event = get_object_or_404(Event, id=event_id, user=request.user)
+
     if request.method == 'POST':
         event.delete()
         messages.success(request, f'The event "{event.title}" was successfully deleted.')
-        return redirect('profile')  # Redirect to the profile page
+        return redirect('profile')
+
     return render(request, 'events/delete_event.html', {'event': event})
 
 
 
 def logout_view(request):
+    """Renders the 'logout.html' template to display a logout confirmation page."""
     return render(request, 'account/logout.html')
 
 
 def logout_confirm(request):
+    """Logs out the user upon form submission, shows a success message, and redirects to the homepage."""
     if request.method == 'POST':
         logout(request)
         messages.success(request, "You have successfully logged out.")

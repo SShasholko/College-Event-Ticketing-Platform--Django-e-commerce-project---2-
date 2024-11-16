@@ -24,28 +24,15 @@ from . import views
 from events import views
 from events.views import profile_view, edit_event, delete_event, logout_view, logout_confirm
 from django.contrib.auth import views as auth_views 
-# from event.views import profile_view, edit_event, delete_event
-# from event_ticketing.event.views import profile_view, edit_event, delete_event
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-
-    # path('events/', views.event_list, name='event_list'), 
-    # path('<int:event_id>/', views.event_detail, name='event_detail'),    
-    path('events/', include('events.urls')),
-    
-    # path('', RedirectView.as_view(url='/events/', permanent=False)),
     path('', views.home, name='home'),
-     
-    # path('payments/', include('payments.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('events/', include('events.urls')),
     path('payments/', include('payments.urls')),
-
     path('logout/', logout_view, name='logout'),
     path('logout/confirm/', logout_confirm, name='logout_confirm'),
-
     path('profile/', views.profile_view, name='profile'),
     path('add-event/', views.add_event, name='add_event'),
     path('edit-event/<int:event_id>/', edit_event, name='edit_event'),
