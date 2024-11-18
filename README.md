@@ -14,3 +14,10 @@ The **College Event Ticketing Platform** is a complete solution for students and
 ### Who It's For
 - **Event Organizers**: Create and manage events, track ticket sales, and edit event details.
 - **Students**: Discover upcoming events, purchase tickets easily, and keep track of bookings.
+
+## 🎨 Style
+### Color Scheme
+The platform features a vibrant, modern color scheme aimed at a teenage and college student audience. The primary colors include shades of blue, green, and purple, with colorful gradient buttons to create an engaging and lively experience.
+
+### Styling Framework
+We used Bootstrap for a consistent, responsive layout across all devices. Custom CSS has been added for unique elements like gradient buttons, a fixed footer, and a styled navbar.
