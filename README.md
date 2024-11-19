@@ -156,6 +156,8 @@ After purchasing a ticket, users receive an email confirmation with the event de
 - **Custom Email Template**: Styled email with the platform’s branding and event details.
 - **QR Code Attachment**: The email includes the QR code as an attachment, making it easy for users to present it at the event entrance.
 - **Responsive Email Design**: Ensures that the email looks good on both desktop and mobile devices.
+|Custom Email Template |  QR Code Attachment |
+|--|--|
 |  ![Email](images-for-readme/email.png) | ![Email](images-for-readme/email-2.png)|
 
 
