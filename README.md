@@ -138,9 +138,9 @@ Custom-styled authentication pages that are both functional and visually appeali
 
 |Screenshot |  Wireframe |
 |--|--|
-|Sign Up| |
+|Sign Up |
 |  ![SignUp](images-for-readme/sing-up.png) | ![SignUp](images-for-readme/sing-up-w.png)|
-|Log In| |
+|Log In |
 |  ![LogIn](images-for-readme/log-in.png) | ![LogIn](images-for-readme/log-in-w.png)|
-|Log Out| |
-|  ![LogOut](images-for-readme/log-out.png) | |
+|Log Out |
+|  ![LogOut](images-for-readme/log-out.png) | ![LogOut](images-for-readme/log-out-w.png) |
