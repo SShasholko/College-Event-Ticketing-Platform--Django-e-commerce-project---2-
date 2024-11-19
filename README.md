@@ -38,5 +38,20 @@ The home page is designed with a vibrant, student-friendly style that immediatel
 |--|--|
 |  ![HomePage1](images-for-readme/home-page-1.png) ![HomePage2](images-for-readme/home-page-2.png) |  ![HomePageW](images-for-readme/home-page-w.png)|
 
+### 🗓️ Upcoming Events Page
+The Upcoming Events page provides a comprehensive list of all future events in an organized and visually engaging layout. It’s designed to help users easily discover and explore events that interest them. Here's what it includes:
+
+- **Event Cards**: Events are presented in vertically aligned cards, each showcasing an image, title, date, description, and a “View Details” button. To keep the design lively, the "View Details" buttons have randomly assigned colors, adding a fun and dynamic touch to the page.
+- **Filter by Category**: Users can narrow down their search by selecting specific categories like Music, Sports, Education, and more.
+- **Search Functionality**: A search bar allows users to find events by typing in relevant keywords.
+- **Adaptive Layout**: Built with Bootstrap’s responsive grid system, the page looks great and works seamlessly across all device types.
+
+|Screenshot |  Wireframe |
+|--|--|
+|  ![EventList](images-for-readme/events-list.png) | ![EventListW](images-for-readme/events-list-w.png)|
+
+
+
+
 
 
