@@ -106,7 +106,9 @@ Displays all the tickets purchased by the user with key details such as event ti
 
 |Screenshot |  Wireframe |
 |--|--|
-|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) ![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
+|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) | |
+| ![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
+|![TicketPurchasePage](images-for-readme/qr-code.png) |
 
 
 
