@@ -39,6 +39,7 @@ The home page is designed with a vibrant, student-friendly style that immediatel
 |  ![HomePage1](images-for-readme/home-page-1.png) ![HomePage2](images-for-readme/home-page-2.png) |  ![HomePageW](images-for-readme/home-page-w.png)|
 
 
+
 ### 🗓️ Upcoming Events Page
 The Upcoming Events page provides a comprehensive list of all future events in an organized and visually engaging layout. It’s designed to help users easily discover and explore events that interest them. Here's what it includes:
 
@@ -50,6 +51,7 @@ The Upcoming Events page provides a comprehensive list of all future events in a
 |Screenshot |  Wireframe |
 |--|--|
 |  ![EventList](images-for-readme/events-list.png) | ![EventListW](images-for-readme/events-list-m.png)|
+
 
 
 ### 📅 Event Detail Page
@@ -69,6 +71,7 @@ The Event Detail page gives users all the important information about a specific
 |  ![EventPage](images-for-readme/event-page.png) | ![EventPageW](images-for-readme/event-page-w.png)|
 
 
+
 ### 🛒 Ticket Purchase Page
 The Ticket Purchase page features a sleek, user-friendly form for selecting ticket quantity and completing the payment process using Stripe.
 
@@ -82,24 +85,46 @@ The Ticket Purchase page features a sleek, user-friendly form for selecting tick
 |--|--|
 |  ![TicketPurchasePage](images-for-readme/pay.png) | ![TicketPurchasePageW](images-for-readme/pay-w.png)|
 
+
+
 ### 👤 Profile Page
 The Profile page provides a personalized experience, displaying user information and an overview of the user’s activities on the platform. It includes two main sections: Created Events and Purchased Tickets.
 
 #### Created Events Block
 Organizers can view their created events with options to edit, delete, or view detailed stats about each event.
 
-    - **Upcoming Events**: Displays a list of upcoming events created by the user. Includes an "Edit" and "Delete" button for each event.
-    - **Past Events**: Lists past events with ticket sales stats.
-    - **Add New Event Button**: A colorful button allows users to quickly add a new event.
+- **Upcoming Events**: Displays a list of upcoming events created by the user. Includes an "Edit" and "Delete" button for each event.
+- **Past Events**: Lists past events with ticket sales stats.
+- **Add New Event Button**: A colorful button allows users to quickly add a new event.
 
 #### Purchased Tickets Block
 Displays all the tickets purchased by the user with key details such as event title, date, time, quantity, and a QR code for ticket validation.
 
-    - **Event Details**: Lists the event title, date, and ticket quantity.
-    - **QR Code Display**: Shows a QR code for each purchased ticket, which can be clicked to view in full size.
-    - **Adaptive Layout**: Uses a two-column layout on larger screens for a clear and organized view.
+- **Event Details**: Lists the event title, date, and ticket quantity.
+- **QR Code Display**: Shows a QR code for each purchased ticket, which can be clicked to view in full size.
+- **Adaptive Layout**: Uses a two-column layout on larger screens for a clear and organized view.
 
 |Screenshot |  Wireframe |
 |--|--|
-|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) ![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
+|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) 
+![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
+
+
+
+### ✏️ Add / Edit / Delete Event Pages
+These pages allow users to manage events easily through intuitive forms styled in line with the rest of the platform.
+
+- **Add Event**: A form to input event details like title, date, venue, description, ticket price, and an image upload option.
+- **Edit Event**: Pre-populated with the current event details, making it easy for users to update any information.
+- **Delete Event**: A confirmation page to prevent accidental deletions with a notification message upon successful deletion.
+
+|Screenshot |  Wireframe |
+|--|--|
+|Add event|--|
+|  ![AddEvent](images-for-readme/add-event.png) | ![AddEvent](images-for-readme/add-event-w.png)|
+|Edit event|--|
+|  ![EditEvent](images-for-readme/edit-event.png) | ![EditEvent](images-for-readme/edit-event-w.png)|
+|Delete event|--|
+|  ![DeleteEvent](images-for-readme/delete-event.png) | ![DeleteEvent](images-for-readme/delete-event-w.png)|
+
 
