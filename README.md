@@ -106,8 +106,7 @@ Displays all the tickets purchased by the user with key details such as event ti
 
 |Screenshot |  Wireframe |
 |--|--|
-|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) 
-![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
+|  ![TicketPurchasePage](images-for-readme/profile-page-1.png) ![TicketPurchasePage](images-for-readme/profile-page-2.png) | ![TicketPurchasePageW](images-for-readme/profile-page-w.png)|
 
 
 
@@ -120,11 +119,28 @@ These pages allow users to manage events easily through intuitive forms styled i
 
 |Screenshot |  Wireframe |
 |--|--|
-|Add event|--|
+|Add event| |
 |  ![AddEvent](images-for-readme/add-event.png) | ![AddEvent](images-for-readme/add-event-w.png)|
-|Edit event|--|
+|Edit event| |
 |  ![EditEvent](images-for-readme/edit-event.png) | ![EditEvent](images-for-readme/edit-event-w.png)|
-|Delete event|--|
+|Delete event| |
 |  ![DeleteEvent](images-for-readme/delete-event.png) | ![DeleteEvent](images-for-readme/delete-event-w.png)|
 
 
+
+
+### 🔑 Authentication Pages (Sign Up, Log In, Log Out)
+Custom-styled authentication pages that are both functional and visually appealing.
+
+- **Google Login Integration**: Allows users to quickly log in using their Google account.
+- **Custom Form Styling**: Forms are styled consistently with the platform’s modern look and feel.
+- **User Feedback**: Clear messages for successful login, logout, and registration.
+
+|Screenshot |  Wireframe |
+|--|--|
+|Sign Up| |
+|  ![SignUp](images-for-readme/sing-up.png) | ![SignUp](images-for-readme/sing-up-w.png)|
+|Log In| |
+|  ![LogIn](images-for-readme/log-in.png) | ![LogIn](images-for-readme/log-in-w.png)|
+|Log Out| |
+|  ![LogOut](images-for-readme/log-out.png) | |
