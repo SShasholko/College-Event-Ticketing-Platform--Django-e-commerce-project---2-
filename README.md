@@ -84,6 +84,7 @@ The Ticket Purchase page features a sleek, user-friendly form for selecting tick
 |Screenshot |  Wireframe |
 |--|--|
 |  ![TicketPurchasePage](images-for-readme/pay.png) | ![TicketPurchasePageW](images-for-readme/pay-w.png)|
+|  ![PaymentSuccessful](images-for-readme/payment-success.png) ||
 
 
 
@@ -160,6 +161,93 @@ After purchasing a ticket, users receive an email confirmation with the event de
 |Custom Email Template |  QR Code Attachment |
 |--|--|
 | ![Email](images-for-readme/email.png) | ![Email](images-for-readme/email-2.png)|
+
+
+## 🧪 Manual Testing
+The application has been tested to ensure that it functions as expected. Below is a list of test cases performed, grouped by feature. Each test was carried out manually on multiple devices (desktop, tablet, and mobile) and across different browsers (Chrome, Firefox, Safari, and Edge).
+
+
+### 1. Home Page Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+| Home Page Load |	Open the home page in the browser	 | The home page should load without any errors, displaying the header, event cards, and call-to-action button	|✅ Pass|
+| Responsive Layout	| Resize the browser window and check on different devices	| The layout should adjust smoothly without overlapping content | ✅ Pass | 
+|Call-to-Action Button |	Click the "See All Events" button|	User should be redirected to the event list page|	✅ Pass|
+
+
+### 2. Event List Page Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Event Filtering|	Select a category from the dropdown and click search|	Only events matching the selected category should be displayed|	✅ Pass|
+|Event Search	|Enter a keyword in the search bar and click search|	The list should update to show relevant events	|✅ Pass|
+|Clear Search|	Click the "Clear Search" button|	The search bar and category filter should reset, displaying all events	|✅ Pass|
+|Event Card Display	|Check the appearance of event cards	|All event images should be the same size and not distorted	|✅ Pass|
+|Responsive Design	|Check the layout on mobile and tablet devices	|The layout should be vertical and adjust appropriately	|✅ Pass|
+
+
+### 3. Event Detail Page Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Event Details Load	|Click on an event from the event list	|The Event Detail page should load with complete information (title, image, date, venue, description)|	✅ Pass|
+|Ticket Availability Check|	Check the "Tickets Remaining" text	|The number of tickets should update based on purchases; if sold out, it should display "SOLD OUT"	|✅ Pass|
+|Purchase Button Visibility	|Check the visibility of the "Purchase Tickets" button	|The button should be visible if tickets are available; hidden if sold out|	✅ Pass|
+|Responsive Design	|Resize the browser and test on mobile devices	|The title overlay and layout should adjust correctly	|✅ Pass|
+
+
+### 4. Ticket Purchase Page Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Quantity Input Validation	|Enter a negative number or zero for the quantity	|The form should show an error message: "Quantity must be at least 1"	| ✅ Pass|
+|Dynamic Total Price Calculation|	Change the quantity of tickets|	The total price should update automatically	|✅ Pass|
+|Stripe Payment Form|	Enter valid and invalid card details|	Payment should only proceed with valid card details; invalid details should show an error message	|✅ Pass|
+|Successful Payment Flow	|Enter valid payment details and click "Purchase Ticket"	|User should be redirected to the success page, and a confirmation email should be sent	|✅ Pass|
+
+
+### 5. Profile Page Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|View Created Events|	Navigate to the Profile page	|The "Created Events" section should display all events created by the user|✅ Pass|
+|Edit and Delete Event Buttons|	Click "Edit" or "Delete" for an event	|User should be redirected to the respective page and see a confirmation message upon deletion	|✅ Pass|
+|Purchased Tickets Section|	Check the "Purchased Tickets" section	|It should list all purchased tickets with event details and QR code	|✅ Pass|
+|QR Code Click	|Click on the QR code image|	The QR code should open in full size	|✅ Pass|
+
+
+### 6. Add / Edit / Delete Event Tests
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Add Event Form Validation	|Submit the form with missing required fields|	Form should display validation errors for missing fields|	✅ Pass|
+|Edit Event Form Pre-fill|	Open an existing event for editing|	The form should be pre-filled with the current event details|	✅ Pass|
+|Delete Event Confirmation	|Click "Delete" and confirm|	The event should be deleted, and a success message should appear|	✅ Pass|
+
+
+### 7. Authentication Tests (Sign Up, Log In, Log Out)
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Sign Up Form Validation	| Try signing up without filling all fields|	Form should display validation errors|	✅ Pass|
+|Google Login Integration|	Click "Log in with Google"|	User should be redirected to Google’s login page and back to the app after login|	✅ Pass|
+|Logout Flow|	Click "Log Out"	| User should see a confirmation page and be redirected to the home page upon logout	|✅ Pass|
+
+
+### 8. Email Notifications
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|Email Receipt for Ticket Purchase	|Complete a ticket purchase	|User should receive an email with event details and QR code attached|	✅ Pass|
+|Responsive Email Design	|Open the email on different devices|	The email layout should adjust properly on both desktop and mobile|	✅ Pass|
+
+
+### 9. Error Handling and Edge Cases
+|Test Case |  Steps | Expected Result |  Status |
+|--|--|--|--|
+|404 Page Not Found|	Access a non-existent URL	|The custom 404 error page should appear with a helpful message and navigation options	|✅ Pass|
+
+### 10. Cross-Browser Compatibility
+|Browser	|Tested Features	|Status|
+|--|--|--|
+|Google Chrome	|Full application	|✅ Pass|
+|Mozilla Firefox	|Full application	|✅ Pass|
+|Microsoft Edge|	Full application|	✅ Pass|
+|Safari|	Full application	|✅ Pass|
+
 
 
 
