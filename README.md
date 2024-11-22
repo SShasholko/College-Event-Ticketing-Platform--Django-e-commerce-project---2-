@@ -346,12 +346,22 @@ The project was deployed using Heroku with a PostgreSQL database. Been used AWS 
 
 Steps for Deployment:
 1. Set up your Heroku environment with the required environment variables:
+   
 - DEBUG: Set to False for production.
 - DATABASE_URL: PostgreSQL database URL.
 - STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY: Stripe API keys for payment integration.
 - EMAIL_HOST_USER and EMAIL_HOST_PASSWORD: Email credentials for notifications.
-2. Run database migrations: python manage.py migrate
-3. Collect static files: python manage.py collectstatic
+
+2. Run database migrations:
+```bash
+python manage.py migrate
+```
+
+3. Collect static files:
+```bash
+python manage.py collectstatic
+```
+
 4. Push to Heroku and apply the changes.
 
 
