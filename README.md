@@ -21,9 +21,13 @@ The platform features a vibrant, modern color scheme aimed at a teenage and coll
 
 ### Primary Buttons on the First Screen
 The first screen button styled with warm colors to catch the user's attention:
+
 Red (#ff6b6b) 🍓 – A dynamic and energetic tone
+
 Yellow (#ffcc33) 🌟 – Bright and cheerful
+
 Green (#4caf50) 🍃 – A fresh and calming color
+
 
 ### Gradient Buttons for Event List on Home Page
 The event list on the home page comes to life with **gradient buttons that are randomly styled** from a curated palette of vibrant gradients. This dynamic approach ensures that each user interaction feels fresh and unique.
@@ -58,6 +62,7 @@ Gradient Options:
 
 ### Footer
 The footer is styled with a sleek and minimalistic design to provide contrast and focus:
+
 Color: #1a1a1a 🖤 – A deep, dark shade that ensures readability and draws attention to footer content without distraction.
 
 
