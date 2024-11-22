@@ -17,8 +17,49 @@ The **College Event Ticketing Platform** is a complete solution for students and
 - **Students**: Discover upcoming events, purchase tickets easily, and keep track of bookings.
 
 ## 🎨 Style
-### Color Scheme
 The platform features a vibrant, modern color scheme aimed at a teenage and college student audience. The primary colors include shades of blue, green, and purple, with colorful gradient buttons to create an engaging and lively experience.
+
+### Primary Buttons on the First Screen
+The first screen button styled with warm colors to catch the user's attention:
+Red (#ff6b6b) 🍓 – A dynamic and energetic tone
+Yellow (#ffcc33) 🌟 – Bright and cheerful
+Green (#4caf50) 🍃 – A fresh and calming color
+
+### Gradient Buttons for Event List on Home Page
+The event list on the home page comes to life with **gradient buttons that are randomly styled** from a curated palette of vibrant gradients. This dynamic approach ensures that each user interaction feels fresh and unique.
+
+The buttons are randomly assigned one of the following gradients:
+- Gradient 1: linear-gradient(45deg, #ff6b6b, #ffcc33) – A bold and energetic blend of red and gold.
+- Gradient 2: linear-gradient(45deg, #36d1dc, #5b86e5) – A cool and calming transition of aqua and blue.
+- Gradient 3: linear-gradient(45deg, #ff758c, #ff7eb3) – A playful and vibrant pink-to-rose gradient.
+- Gradient 4: linear-gradient(45deg, #667eea, #764ba2) – A deep and mysterious purple fade.
+- Gradient 5: linear-gradient(45deg, #f7971e, #ffd200) – A warm and cheerful golden orange glow.
+- Gradient 6: linear-gradient(45deg, #30cfd0, #330867) – A striking contrast of teal and navy.
+- Gradient 7: linear-gradient(45deg, #43cea2, #185a9d) – A fresh and natural green-to-blue gradient.
+![Gradient Buttons for Event List on Home Page](images-for-readme/buttons-home-page.png)
+
+
+### Gradient Buttons for Event List Page
+Each button on the Event List Page is **assigned a gradient at random** from the palette, making the interface dynamic and visually diverse. This playful use of colors adds variety and excitement for users browsing events.
+
+Gradient Options: 
+- Gradient 1: linear-gradient(to right, #ff6f61, #ff9472) – A warm peach-to-coral gradient for a soft and inviting look.
+- Gradient 2: linear-gradient(to right, #6b5b95, #b8a9c9) – A sophisticated transition from deep purple to lavender.
+- Gradient 3: linear-gradient(to right, #88b04b, #d0e17d) – A lively green gradient that feels fresh and organic.
+- Gradient 4: linear-gradient(to right, #f7cac9, #f3a683) – A gentle pink-to-peach blend for a delicate touch.
+- Gradient 5: linear-gradient(to right, #92a8d1, #34ace0) – A crisp blue gradient, evoking calm and clarity.
+- Gradient 6: linear-gradient(to right, #ffb347, #ffcc33) – A cheerful gold-to-yellow transition for a bright and optimistic feel.
+- Gradient 7: linear-gradient(to right, #d4a5a5, #ff8c94) – A soft pink gradient with hints of warmth and energy.
+- Gradient 8: linear-gradient(to right, #b565a7, #8e44ad) – A rich purple gradient that’s bold and captivating.
+- Gradient 9: linear-gradient(to right, #009688, #48c9b0) – A teal-to-mint gradient that feels refreshing and modern.
+- Gradient 10: linear-gradient(to right, #ff8c00, #ff6347) – A fiery orange-to-red gradient for a bold and striking appearance.
+![Gradient Buttons for Event List on Home Page](images-for-readme/buttons-event-list-page.png)
+
+
+### Footer
+The footer is styled with a sleek and minimalistic design to provide contrast and focus:
+Color: #1a1a1a 🖤 – A deep, dark shade that ensures readability and draws attention to footer content without distraction.
+
 
 ### Styling Framework
 We used Bootstrap for a consistent, responsive layout across all devices. Custom CSS has been added for unique elements like gradient buttons, a fixed footer, and a styled navbar.
@@ -163,6 +204,52 @@ After purchasing a ticket, users receive an email confirmation with the event de
 | ![Email](images-for-readme/email.png) | ![Email](images-for-readme/email-2.png)|
 
 
+## 🗂️ Database Schema
+Below is the schema for the platform, showcasing the relationships between different models.
+
+
+## 🛠️ Technologies Used
+This project leverages modern web development tools and technologies to ensure a seamless and efficient experience for users. Here's a breakdown of the key technologies used:
+
+### **Frontend**
+- **HTML5 & CSS3**: Structure and styling of web pages.
+- [Bootstrap](https://getbootstrap.com/): Ensures responsive design for all devices and modern UI components.
+- **JavaScript**: For interactivity, such as dynamic buttons colour update.
+- [Flatpickr](https://flatpickr.js.org/): A lightweight library for modern, user-friendly date pickers.
+
+### **Backend**
+- [Python](https://www.python.org/): Core programming language for backend logic.
+- [Django](https://www.djangoproject.com/): A powerful framework for building secure and scalable web applications.
+- **Django-Allauth**: Handles user authentication and social logins (e.g., Google).
+
+### **Database**
+- **SQLite**: Lightweight and easy-to-use database for local development.
+- **PostgreSQL**: A robust relational database for production deployment on Heroku.
+
+### **Payment Integration**
+- [Stripe API](https://stripe.com/): Secure online payment processing for ticket purchases.
+
+### **QR Code Generation**
+- [qrcode Library](https://pypi.org/project/qrcode/): Generates QR codes for tickets, enhancing event entry management.
+
+### **Email Functionality**
+- **Django Email Backend**: Sends transactional emails, including ticket confirmations with QR codes.
+
+### **Deployment**
+- [Heroku](https://www.heroku.com/): Cloud platform for deploying the project with GitHub integration.
+- [Gunicorn](https://gunicorn.org/): WSGI HTTP server for running the application in production.
+
+### **Version Control**
+- [Git & GitHub](https://github.com/): For version control and project hosting.
+
+### **Other Tools**
+- [Font Awesome](https://fontawesome.com/): For attractive icons on the website.
+- [Pillow](https://github.com/CSFelix/PYTHON-PILLOW-PYQRCODE-QR-CODE-GENERATOR): For image processing and QR code handling.
+- [Google Fonts](https://fonts.google.com/): Integrated for access to a diverse selection of web fonts to enhance typography.
+- [Justinmind](https://www.justinmind.com/): Utilized for visual planning and wireframing.
+
+
+
 ## 🧪 Manual Testing
 The application has been tested to ensure that it functions as expected. Below is a list of test cases performed, grouped by feature. Each test was carried out manually on multiple devices (desktop, tablet, and mobile) and across different browsers (Chrome, Firefox, Safari, and Edge).
 
@@ -249,6 +336,24 @@ The application has been tested to ensure that it functions as expected. Below i
 |Safari|	Full application	|✅ Pass|
 
 
+## 🌐 Deployment
+The project was deployed using Heroku with a PostgreSQL database. Been used AWS S3 for static file storage and SendGrid for email notifications.
+
+Steps for Deployment:
+1. Set up your Heroku environment with the required environment variables:
+- DEBUG: Set to False for production.
+- DATABASE_URL: PostgreSQL database URL.
+- STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY: Stripe API keys for payment integration.
+- EMAIL_HOST_USER and EMAIL_HOST_PASSWORD: Email credentials for notifications.
+2. Run database migrations: python manage.py migrate
+3. Collect static files: python manage.py collectstatic
+4. Push to Heroku and apply the changes.
 
 
+## 🫶 Acknowledgements
+- **My Son**: Thank you for your enthusiasm and patience. Love you!
+- **My Friends**: Heartfelt appreciation to my friends for dedicating their time to test the website and providing constructive feedback, helping to refine and improve the user experience.
+- **My Mentor**: Gratitude to Marcel for guiding me through the development process and offering invaluable advice and expertise.
 
+## Development Team
+Svitlana Shasholko: Lead Developer 😊😉
