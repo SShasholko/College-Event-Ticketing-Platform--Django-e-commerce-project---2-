@@ -22,11 +22,7 @@ The platform features a vibrant, modern color scheme aimed at a teenage and coll
 ### Primary Buttons on the First Screen
 The first screen button styled with warm colors to catch the user's attention:
 
-Red (#ff6b6b) 🍓 – A dynamic and energetic tone
-
-Yellow (#ffcc33) 🌟 – Bright and cheerful
-
-Green (#4caf50) 🍃 – A fresh and calming color
+Red (#ff6b6b) 🍎 – Yellow (#ffcc33) 🌟 – Green (#4caf50) 🍃 
 
 
 ### Gradient Buttons for Event List on Home Page
@@ -40,6 +36,7 @@ The buttons are randomly assigned one of the following gradients:
 - Gradient 5: linear-gradient(45deg, #f7971e, #ffd200) – A warm and cheerful golden orange glow.
 - Gradient 6: linear-gradient(45deg, #30cfd0, #330867) – A striking contrast of teal and navy.
 - Gradient 7: linear-gradient(45deg, #43cea2, #185a9d) – A fresh and natural green-to-blue gradient.
+  
 ![Gradient Buttons for Event List on Home Page](images-for-readme/buttons-home-page.png)
 
 
@@ -57,6 +54,7 @@ Gradient Options:
 - Gradient 8: linear-gradient(to right, #b565a7, #8e44ad) – A rich purple gradient that’s bold and captivating.
 - Gradient 9: linear-gradient(to right, #009688, #48c9b0) – A teal-to-mint gradient that feels refreshing and modern.
 - Gradient 10: linear-gradient(to right, #ff8c00, #ff6347) – A fiery orange-to-red gradient for a bold and striking appearance.
+
 ![Gradient Buttons for Event List on Home Page](images-for-readme/buttons-event-list-page.png)
 
 
@@ -67,7 +65,7 @@ Color: #1a1a1a 🖤 – A deep, dark shade that ensures readability and draws at
 
 
 ### Styling Framework
-We used Bootstrap for a consistent, responsive layout across all devices. Custom CSS has been added for unique elements like gradient buttons, a fixed footer, and a styled navbar.
+Been used [Bootstrap](https://getbootstrap.com/) for a consistent, responsive layout across all devices. Custom CSS has been added for unique elements like gradient buttons, a fixed footer, and a styled navbar.
 
 ## 🚀 Features
 This project comes with features thoughtfully crafted for college students. Everything is designed to make exploring events, managing tickets, and staying updated easy and enjoyable.
@@ -212,6 +210,8 @@ After purchasing a ticket, users receive an email confirmation with the event de
 ## 🗂️ Database Schema
 Below is the schema for the platform, showcasing the relationships between different models.
 
+ ![DB schema](images-for-readme/bd.png)
+
 
 ## 🛠️ Technologies Used
 This project leverages modern web development tools and technologies to ensure a seamless and efficient experience for users. Here's a breakdown of the key technologies used:
@@ -226,10 +226,6 @@ This project leverages modern web development tools and technologies to ensure a
 - [Python](https://www.python.org/): Core programming language for backend logic.
 - [Django](https://www.djangoproject.com/): A powerful framework for building secure and scalable web applications.
 - **Django-Allauth**: Handles user authentication and social logins (e.g., Google).
-
-### **Database**
-- **SQLite**: Lightweight and easy-to-use database for local development.
-- **PostgreSQL**: A robust relational database for production deployment on Heroku.
 
 ### **Payment Integration**
 - [Stripe API](https://stripe.com/): Secure online payment processing for ticket purchases.
@@ -340,6 +336,17 @@ The application has been tested to ensure that it functions as expected. Below i
 |Microsoft Edge|	Full application|	✅ Pass|
 |Safari|	Full application	|✅ Pass|
 
+### Lighthouse Performance Scores
+Been used Google Lighthouse to audit the website's performance, accessibility, SEO, and best practices. Below are the Lighthouse scores for key pages in the application:
+
+|Page	|Performance	|Accessibility| Best Practices| SEO| 
+|--|--|--|--|--|
+|Home Page|--|--|--|--|
+|Event List Page|--|--|--|--|
+|Event Detail Page|--|--|--|--|
+|Profile Page|--|--|--|--|
+|Ticket Purchase Page|--|--|--|--|
+
 
 ## 🌐 Deployment
 The project was deployed using Heroku with a PostgreSQL database. Been used AWS S3 for static file storage and SendGrid for email notifications.
@@ -370,5 +377,5 @@ python manage.py collectstatic
 - **My Friends**: Heartfelt appreciation to my friends for dedicating their time to test the website and providing constructive feedback, helping to refine and improve the user experience.
 - **My Mentor**: Gratitude to Marcel for guiding me through the development process and offering invaluable advice and expertise.
 
-## Development Team
+## 💻 Development Team
 Svitlana Shasholko: Lead Developer 😊😉
