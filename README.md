@@ -1,3 +1,5 @@
+![Mockup](images-for-readme/mockup.png)
+
 # College Event Ticketing Platform
 
 ## ✨ Introduction
@@ -341,36 +343,56 @@ Been used Google Lighthouse to audit the website's performance, accessibility, S
 
 |Page	|Performance	|Accessibility| Best Practices| SEO| 
 |--|--|--|--|--|
-|Home Page|--|--|--|--|
-|Event List Page|--|--|--|--|
-|Event Detail Page|--|--|--|--|
-|Profile Page|--|--|--|--|
-|Ticket Purchase Page|--|--|--|--|
+|Home Page|73|85|61|91|
+|Event List Page|70|84|61|91|
+|Event Detail Page|72|88|61|91|
+|Profile Page|90|78|61|91|
+|Ticket Purchase Page|91|87|79|91|
 
 
 ## 🌐 Deployment
-The project was deployed using Heroku with a PostgreSQL database. Been used AWS S3 for static file storage and SendGrid for email notifications.
+The College Event Ticketing Platform is deployed on Heroku with Cloudinary managing media files like event images and QR codes.
 
-Steps for Deployment:
-1. Set up your Heroku environment with the required environment variables:
-   
-- DEBUG: Set to False for production.
-- DATABASE_URL: PostgreSQL database URL.
-- STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY: Stripe API keys for payment integration.
-- EMAIL_HOST_USER and EMAIL_HOST_PASSWORD: Email credentials for notifications.
+Steps to Deploy Directly to Heroku:
 
-2. Run database migrations:
-```bash
-python manage.py migrate
+### Prepare the Project
+1. Ensure **`requirements.txt`**, **`Procfile`**, and **`.env`** are correctly configured.
+2. Add Cloudinary settings to `settings.py`:
+   ```python
+   DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+   ```
+3. Set environment variables in Heroku:
+- `SECRET_KEY`
+- `CLOUDINARY_URL`
+- Stripe keys: `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`.
+
+### Deploy to Heroku
+1. Log in to Heroku CLI:
+```bush
+heroku login
+```
+2. Create a Heroku app:
+```bush
+heroku create app-name
+```
+3. Deploy the code:
+```bush
+git push heroku main
 ```
 
+### Post-Deployment
+1. Run migrations:
+```bush
+heroku run python manage.py migrate
+```
+2. Create a superuser:
+```bush
+heroku run python manage.py createsuperuser
+```
 3. Collect static files:
-```bash
-python manage.py collectstatic
+```bush
+heroku run python manage.py collectstatic --noinput
 ```
-
-4. Push to Heroku and apply the changes.
-
 
 ## 🫶 Acknowledgements
 - **My Son**: Thank you for your enthusiasm and patience. Love you!
