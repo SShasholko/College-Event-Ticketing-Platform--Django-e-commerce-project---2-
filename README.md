@@ -242,6 +242,9 @@ This project leverages modern web development tools and technologies to ensure a
 - [Heroku](https://www.heroku.com/): Cloud platform for deploying the project with GitHub integration.
 - [Gunicorn](https://gunicorn.org/): WSGI HTTP server for running the application in production.
 
+### **Cloud Storage**
+- [Cloudinary](https://cloudinary.com/): For media file management and QR code storage.
+
 ### **Version Control**
 - [Git & GitHub](https://github.com/): For version control and project hosting.
 
@@ -356,11 +359,11 @@ The College Event Ticketing Platform is deployed on Heroku with Cloudinary manag
 Steps to Deploy Directly to Heroku:
 
 ### Prepare the Project
-1. Ensure **`requirements.txt`**, **`Procfile`**, and **`.env`** are correctly configured.
+1. Ensure `requirements.txt`, `Procfile`, and `.env` are correctly configured.
 2. Add Cloudinary settings to `settings.py`:
-   ```python
-   DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-   ```
+```python
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
 3. Set environment variables in Heroku:
 - `SECRET_KEY`
 - `CLOUDINARY_URL`
