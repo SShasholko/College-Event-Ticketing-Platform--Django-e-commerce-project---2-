@@ -1,6 +1,59 @@
 ![Mockup](images-for-readme/mockup.png)
 
 # College Event Ticketing Platform
+Link to the project - [College Event Ticketing Platform](https://event-ticketing-app-29166a846e27.herokuapp.com/)
+
+Table of content:
+   * [✨ Introduction](#-introduction)
+      + [What It Does](#what-it-does)
+      + [Why You'll Love It](#why-youll-love-it)
+      + [Who It's For](#who-its-for)
+   * [🎨 Style](#-style)
+      + [Primary Buttons on the First Screen](#primary-buttons-on-the-first-screen)
+      + [Gradient Buttons for Event List on Home Page](#gradient-buttons-for-event-list-on-home-page)
+      + [Gradient Buttons for Event List Page](#gradient-buttons-for-event-list-page)
+      + [Footer](#footer)
+      + [Styling Framework](#styling-framework)
+   * [🚀 Features](#-features)
+      + [🏠 Home Page](#-home-page)
+      + [🗓️ Upcoming Events Page](#-upcoming-events-page)
+      + [📅 Event Detail Page](#-event-detail-page)
+      + [🛒 Ticket Purchase Page](#-ticket-purchase-page)
+      + [👤 Profile Page](#-profile-page)
+         - [Created Events Block](#created-events-block)
+         - [Purchased Tickets Block](#purchased-tickets-block)
+      + [✏️ Add / Edit / Delete Event Pages](#-add-edit-delete-event-pages)
+      + [🔑 Authentication Pages (Sign Up, Log In, Log Out)](#-authentication-pages-sign-up-log-in-log-out)
+      + [Email with QR Code](#email-with-qr-code)
+   * [🗂️ Database Schema](#-database-schema)
+   * [🛠️ Technologies Used](#-technologies-used)
+      + [Frontend](#frontend)
+      + [Backend](#backend)
+      + [Payment Integration](#payment-integration)
+      + [QR Code Generation](#qr-code-generation)
+      + [Email Functionality](#email-functionality)
+      + [Deployment](#deployment)
+      + [Cloud Storage](#cloud-storage)
+      + [Version Control](#version-control)
+      + [Other Tools](#other-tools)
+   * [🧪 Manual Testing](#-manual-testing)
+      + [1. Home Page Tests](#1-home-page-tests)
+      + [2. Event List Page Tests](#2-event-list-page-tests)
+      + [3. Event Detail Page Tests](#3-event-detail-page-tests)
+      + [4. Ticket Purchase Page Tests](#4-ticket-purchase-page-tests)
+      + [5. Profile Page Tests](#5-profile-page-tests)
+      + [6. Add / Edit / Delete Event Tests](#6-add-edit-delete-event-tests)
+      + [7. Authentication Tests (Sign Up, Log In, Log Out)](#7-authentication-tests-sign-up-log-in-log-out)
+      + [8. Email Notifications](#8-email-notifications)
+      + [9. Error Handling and Edge Cases](#9-error-handling-and-edge-cases)
+      + [10. Cross-Browser Compatibility](#10-cross-browser-compatibility)
+      + [Lighthouse Performance Scores](#lighthouse-performance-scores)
+   * [🌐 Deployment](#-deployment)
+      + [Prepare the Project](#prepare-the-project)
+      + [Deploy to Heroku](#deploy-to-heroku)
+      + [Post-Deployment](#post-deployment)
+   * [🫶 Acknowledgements](#-acknowledgements)
+   * [💻 Development Team](#-development-team)
 
 ## ✨ Introduction
 The **College Event Ticketing Platform** is a fun and easy-to-use website for students and event organizers. It helps people create and manage events, buy tickets securely, and keep track of their bookings. With a colorful, responsive design, it looks great on all devices. Features like QR code tickets, user profiles, and a smooth checkout process make it simple for everyone to join in and enjoy college events.
@@ -399,7 +452,7 @@ heroku run python manage.py collectstatic --noinput
 
 ## 🫶 Acknowledgements
 - **My Son**: Thank you for your enthusiasm and patience. Love you!
-- **My Friends**: Heartfelt appreciation to my friends for dedicating their time to test the website and providing constructive feedback, helping to refine and improve the user experience.
+- **My Friends**: Heartfelt appreciation to my friends for dedicating their time to test the project and providing constructive feedback, helping to refine and improve the user experience.
 - **My Mentor**: Gratitude to Marcel for guiding me through the development process and offering invaluable advice and expertise.
 
 ## 💻 Development Team
