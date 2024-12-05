@@ -268,6 +268,17 @@ After purchasing a ticket, users receive an email confirmation with the event de
 | ![Email](images-for-readme/email.png) | ![Email](images-for-readme/email-2.png)|
 
 
+
+### 404 Error Page
+The custom 404 Error Page provides a user-friendly experience when users navigate to a non-existent or broken link within the platform.
+
+- **Custom Design**: Branded with the platform's bright color scheme for a cohesive user experience; displays a friendly error message, such as "Oops! Page not found."
+- **Helpful Navigation Options**: Includes buttons to the home page and event listings.
+- **Responsive Design**: Optimized for both desktop and mobile devices, ensuring accessibility across platforms.
+![404 Error Page](images-for-readme/page-404.png)
+
+
+
 ## 🗂️ Database Schema
 Below is the schema for the platform, showcasing the relationships between different models.
 
