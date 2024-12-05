@@ -25,6 +25,7 @@ Table of content:
    * [✏️ Add / Edit / Delete Event Pages](#-add-edit-delete-event-pages)
    * [🔑 Authentication Pages (Sign Up, Log In, Log Out)](#-authentication-pages-sign-up-log-in-log-out)
    * [Email with QR Code](#email-with-qr-code)
+   * [404 Error Page](#404-error-page)
 - [🗂️ Database Schema](#-database-schema)
 - [🛠️ Technologies Used](#-technologies-used)
    * [Frontend](#frontend)
