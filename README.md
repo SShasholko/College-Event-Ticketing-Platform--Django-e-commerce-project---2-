@@ -4,56 +4,62 @@
 Link to the project - [College Event Ticketing Platform](https://event-ticketing-app-29166a846e27.herokuapp.com/)
 
 Table of content:
-   * [✨ Introduction](#-introduction)
-      + [What It Does](#what-it-does)
-      + [Why You'll Love It](#why-youll-love-it)
-      + [Who It's For](#who-its-for)
-   * [🎨 Style](#-style)
-      + [Primary Buttons on the First Screen](#primary-buttons-on-the-first-screen)
-      + [Gradient Buttons for Event List on Home Page](#gradient-buttons-for-event-list-on-home-page)
-      + [Gradient Buttons for Event List Page](#gradient-buttons-for-event-list-page)
-      + [Footer](#footer)
-      + [Styling Framework](#styling-framework)
-   * [🚀 Features](#-features)
-      + [🏠 Home Page](#-home-page)
-      + [🗓️ Upcoming Events Page](#-upcoming-events-page)
-      + [📅 Event Detail Page](#-event-detail-page)
-      + [🛒 Ticket Purchase Page](#-ticket-purchase-page)
-      + [👤 Profile Page](#-profile-page)
-         - [Created Events Block](#created-events-block)
-         - [Purchased Tickets Block](#purchased-tickets-block)
-      + [✏️ Add / Edit / Delete Event Pages](#-add-edit-delete-event-pages)
-      + [🔑 Authentication Pages (Sign Up, Log In, Log Out)](#-authentication-pages-sign-up-log-in-log-out)
-      + [Email with QR Code](#email-with-qr-code)
-   * [🗂️ Database Schema](#-database-schema)
-   * [🛠️ Technologies Used](#-technologies-used)
-      + [Frontend](#frontend)
-      + [Backend](#backend)
-      + [Payment Integration](#payment-integration)
-      + [QR Code Generation](#qr-code-generation)
-      + [Email Functionality](#email-functionality)
-      + [Deployment](#deployment)
-      + [Cloud Storage](#cloud-storage)
-      + [Version Control](#version-control)
-      + [Other Tools](#other-tools)
-   * [🧪 Manual Testing](#-manual-testing)
-      + [1. Home Page Tests](#1-home-page-tests)
-      + [2. Event List Page Tests](#2-event-list-page-tests)
-      + [3. Event Detail Page Tests](#3-event-detail-page-tests)
-      + [4. Ticket Purchase Page Tests](#4-ticket-purchase-page-tests)
-      + [5. Profile Page Tests](#5-profile-page-tests)
-      + [6. Add / Edit / Delete Event Tests](#6-add-edit-delete-event-tests)
-      + [7. Authentication Tests (Sign Up, Log In, Log Out)](#7-authentication-tests-sign-up-log-in-log-out)
-      + [8. Email Notifications](#8-email-notifications)
-      + [9. Error Handling and Edge Cases](#9-error-handling-and-edge-cases)
-      + [10. Cross-Browser Compatibility](#10-cross-browser-compatibility)
-      + [Lighthouse Performance Scores](#lighthouse-performance-scores)
-   * [🌐 Deployment](#-deployment)
-      + [Prepare the Project](#prepare-the-project)
-      + [Deploy to Heroku](#deploy-to-heroku)
-      + [Post-Deployment](#post-deployment)
-   * [🫶 Acknowledgements](#-acknowledgements)
-   * [💻 Development Team](#-development-team)
+- [✨ Introduction](#-introduction)
+   * [What It Does](#what-it-does)
+   * [Why You'll Love It](#why-youll-love-it)
+   * [Who It's For](#who-its-for)
+- [🎨 Style](#-style)
+   * [Primary Buttons on the First Screen](#primary-buttons-on-the-first-screen)
+   * [Gradient Buttons for Event List on Home Page](#gradient-buttons-for-event-list-on-home-page)
+   * [Gradient Buttons for Event List Page](#gradient-buttons-for-event-list-page)
+   * [Footer](#footer)
+   * [Styling Framework](#styling-framework)
+- [🚀 Features](#-features)
+   * [🏠 Home Page](#-home-page)
+   * [🗓️ Upcoming Events Page](#-upcoming-events-page)
+   * [📅 Event Detail Page](#-event-detail-page)
+   * [🛒 Ticket Purchase Page](#-ticket-purchase-page)
+   * [👤 Profile Page](#-profile-page)
+      + [Created Events Block](#created-events-block)
+      + [Purchased Tickets Block](#purchased-tickets-block)
+   * [✏️ Add / Edit / Delete Event Pages](#-add-edit-delete-event-pages)
+   * [🔑 Authentication Pages (Sign Up, Log In, Log Out)](#-authentication-pages-sign-up-log-in-log-out)
+   * [Email with QR Code](#email-with-qr-code)
+- [🗂️ Database Schema](#-database-schema)
+- [🛠️ Technologies Used](#-technologies-used)
+   * [Frontend](#frontend)
+   * [Backend](#backend)
+   * [Payment Integration](#payment-integration)
+   * [QR Code Generation](#qr-code-generation)
+   * [Email Functionality](#email-functionality)
+   * [Deployment](#deployment)
+   * [Cloud Storage](#cloud-storage)
+   * [Version Control](#version-control)
+   * [Other Tools](#other-tools)
+- [🧪 Manual Testing](#-manual-testing)
+   * [1. Home Page Tests](#1-home-page-tests)
+   * [2. Event List Page Tests](#2-event-list-page-tests)
+   * [3. Event Detail Page Tests](#3-event-detail-page-tests)
+   * [4. Ticket Purchase Page Tests](#4-ticket-purchase-page-tests)
+   * [5. Profile Page Tests](#5-profile-page-tests)
+   * [6. Add / Edit / Delete Event Tests](#6-add-edit-delete-event-tests)
+   * [7. Authentication Tests (Sign Up, Log In, Log Out)](#7-authentication-tests-sign-up-log-in-log-out)
+   * [8. Email Notifications](#8-email-notifications)
+   * [9. Error Handling and Edge Cases](#9-error-handling-and-edge-cases)
+   * [10. Cross-Browser Compatibility](#10-cross-browser-compatibility)
+   * [Lighthouse Performance Scores](#lighthouse-performance-scores)
+   * [Code Validation](#code-validation)
+      + [1. HTML Validation](#1-html-validation)
+      + [2. CSS Validation](#2-css-validation)
+      + [3. JavaScript Validation](#3-javascript-validation)
+      + [4. Python Code Validation](#4-python-code-validation)
+      + [5. Django Template Validation](#5-django-template-validation)
+- [🌐 Deployment](#-deployment)
+   * [Prepare the Project](#prepare-the-project)
+   * [Deploy to Heroku](#deploy-to-heroku)
+   * [Post-Deployment](#post-deployment)
+- [🫶 Acknowledgements](#-acknowledgements)
+- [💻 Development Team](#-development-team)
 
 ## ✨ Introduction
 The **College Event Ticketing Platform** is a fun and easy-to-use website for students and event organizers. It helps people create and manage events, buy tickets securely, and keep track of their bookings. With a colorful, responsive design, it looks great on all devices. Features like QR code tickets, user profiles, and a smooth checkout process make it simple for everyone to join in and enjoy college events.
@@ -400,10 +406,57 @@ Been used Google Lighthouse to audit the website's performance, accessibility, S
 |Page	|Performance	|Accessibility| Best Practices| SEO| 
 |--|--|--|--|--|
 |Home Page|73|85|61|91|
-|Event List Page|70|84|61|91|
+|Event List Page|79|84|61|91|
 |Event Detail Page|72|88|61|91|
 |Profile Page|90|78|61|91|
 |Ticket Purchase Page|91|87|79|91|
+
+### Code Validation
+The following steps and tools were used for code validation:
+ 
+#### 1. HTML Validation
+  - **Tool Used**: [W3C HTML Validator](https://validator.w3.org)
+  - **Steps Taken**:
+    - Checked all HTML pages for syntax errors and compliance with HTML5 standards.
+    - Fixed issues such as missing alt attributes, unclosed tags, and improper nesting of elements.
+  - **Outcome**:
+    All pages passed validation with no critical errors or warnings.
+ ![HTML Validation](images-for-readme/valid-html.png)
+
+#### 2. CSS Validation
+  - **Tool Used**: [W3C CSS Validator](https://jigsaw.w3.org/)
+  - **Steps Taken**:
+    - Validated custom CSS file to ensure proper syntax.
+    - Resolved issues related to vendor-specific properties and deprecated rules.
+  - **Outcome**:
+  CSS file passed validation and is optimized for responsiveness.
+![CSS Validation](images-for-readme/valid-css.png)
+
+#### 3. JavaScript Validation
+  - **Tool Used**: [JSHint](https://jshint.com/)
+  - **Steps Taken**:
+    - Scanned JavaScript inline scripts for syntax errors and potential bugs.
+    - Ensured consistent coding style by following the ECMAScript standards.
+  - **Outcome**:
+  Eliminated unused variables, corrected function scoping, and improved overall code readability.
+![JS Validation](images-for-readme/valid-js.png)
+
+#### 4. Python Code Validation
+  - **Tool Used**: [Pythonium](https://pythonium.net/linter)
+  - **Steps Taken**:
+    - Checked Python scripts for syntax errors, adherence to PEP 8 standards, and code quality.
+    - Refactored code to resolve linting issues such as long lines, unused imports, and inconsistent indentation.
+  - **Outcome**:
+  Python code is clean, readable, and conforms to standard coding practices.
+![Python Validation](images-for-readme/valid-python.png)
+
+#### 5. Django Template Validation
+  - **Tool Used**: Manual testing with Django's built-in tools.
+  - **Steps Taken**:
+    - Checked template syntax and ensured no missing {% block %} or {% endblock %} tags.
+    - Validated dynamic data rendering to avoid broken or incomplete pages.
+  - **Outcome**:
+  All templates were validated successfully.
 
 
 ## 🌐 Deployment
