@@ -1,0 +1,725 @@
+/* -------------------Base & Home Pages Styling------------------------ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex-grow: 1;
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.card-text {
+    color: #6c757d;
+}
+.hero-section {
+    background: url('../images/default-event.avif') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    margin-bottom: 50px;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+.main-heading {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 6rem;
+    line-height: 0.97em;
+    font-weight: 700;
+    margin-bottom: 70px;
+}
+.sub-heading, .h2-style {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33, #4caf50);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta-button:hover, .colorful-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+.event-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+.gradient-btn {
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+.gradient-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Predefined Gradient Classes */
+.gradient-1 {
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33);
+}
+.gradient-2 {
+    background: linear-gradient(45deg, #36d1dc, #5b86e5);
+}
+.gradient-3 {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+}
+.gradient-4 {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+.gradient-5 {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+}
+.gradient-6 {
+    background: linear-gradient(45deg, #30cfd0, #330867);
+}
+.gradient-7 {
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+}
+.colorful-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff6f61, #ff9a9e, #ff6f61);
+    background-size: 200% 200%;
+    box-shadow: 0 8px 15px rgba(255, 105, 135, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 50px;
+}
+.colorful-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(255, 105, 135, 0.3);
+    color: #fff;
+}
+.custom-footer {
+    background-color: #1a1a1a;  
+    color: #f0f0f0;
+    padding: 5px 0;
+}
+.footer-logo-img {
+    max-width: 60px;
+}
+.footer-links {
+    display: flex;
+    gap: 50px;
+}
+.footer-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #ff9a9e;
+}
+.footer-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* -------------------Events Page Styling------------------------ */
+.random-gradient-btn {
+    font-weight: bold;
+    padding: 10px 40px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: inline-block;
+}
+.event-image {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    border-radius: 8px;
+}
+.event-title{
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.4em;
+    font-weight: 500;
+    margin: 0 30px 30px 0;
+}
+.event-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+.event-title-link:hover {
+    color: #ff6f61;
+}
+
+/* -------------------Event Details Page Styling------------------------ */
+.event-details {
+    color: #333;
+}
+.event-details h2 {
+    font-size: 2em;
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+.gradient-btn-purchase {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+}
+.gradient-btn-purchase:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* -------------------Log In Page Styling------------------------ */
+.btn-google {
+    background: #4285F4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.btn-google:hover {
+    background: #357ae8;
+    color: #fff;
+}
+.gradient-login-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.gradient-login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* -------------------Purchase Page Styling------------------------ */
+.card-purchase {
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+.btn-gradient-purchase {
+    background: linear-gradient(90deg, #ff6f61, #ff9966);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+.btn-gradient-purchase:hover {
+    background: linear-gradient(90deg, #ff9966, #ff6f61);
+    color: #fff;
+}
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+#card-element {
+    background: #fff;
+}
+.btn-outline-dark {
+    color: #333;
+    border: 1px solid #333;
+}
+.btn-outline-dark:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* -------------------Profile Page Styling------------------------ */
+.profile-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+.profile-welcome {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-family: "Red Hat Display", sans-serif;
+}
+.profile-info {
+    font-size: 1.1rem;
+    color: #555;
+}
+.profile-add-btn {
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.profile-add-btn:hover {
+    background: linear-gradient(45deg, #f06595, #ff6b6b);
+    color: #fff;
+    transform: translateY(-3px);
+}
+.section-title {
+    font-size: 1.8rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    font-family: "Red Hat Display", sans-serif;
+}
+.events-subtitle {
+    font-size: 1.4rem;
+    color: #495057;
+    margin-bottom: 10px;
+    font-family: "Red Hat Display", sans-serif;
+}
+.qr-code-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+.qr-code-container {
+    flex-shrink: 0;
+    margin-left: 20px;
+    text-align: right;
+}
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+.btn.profile-section-btn {
+    color: #495057;
+    border: 1px solid #ff4081;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.btn.profile-section-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #fc8bb0, #fac6d7); 
+    color: white;
+    border: none;
+}
+
+/* -------------------Success Page Styling------------------------ */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: linear-gradient(135deg, #f8a1d7 0%, #cbdaf5 100%);
+    color: #fff;
+}
+.success-card {
+    max-width: 500px;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 15px;
+    animation: pop 0.5s ease-in-out;
+}
+.success-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.success-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.success-view-tickets-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+.success-return-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+.success-view-tickets-btn:hover,
+.success-return-btn:hover {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* -------------------Edit Event Page Styling------------------------ */
+.edit-event-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.edit-event-title {
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.edit-event-form .form-group {
+    margin-bottom: 15px;
+}
+.edit-event-form label {
+    font-weight: bold;
+    color: #555;
+}
+.edit-event-form input,
+.edit-event-form select,
+.edit-event-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.edit-event-btn {
+    background: linear-gradient(45deg, #4caf50, #00c853);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.edit-event-btn:hover {
+    background: linear-gradient(45deg, #388e3c, #00796b);
+    color: #fff;
+}
+.cancel-btn {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cancel-btn:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}
+
+/* -------------------Delete Event Page Styling------------------------ */
+.delete-event-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.delete-event-title {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "Red Hat Display", sans-serif;
+}
+.delete-event-text {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.delete-event-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.delete-btn {
+    background: linear-gradient(45deg, #e53935, #d32f2f);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+.delete-btn:hover {
+    background: linear-gradient(45deg, #c62828, #b71c1c);
+    color: #fff;
+}
+.cancel-delete-btn {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+.cancel-delete-btn:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}
+
+/* -------------------Add Event Page Styling------------------------ */
+.add-event-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+.add-event-title{
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.add-event-form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+.add-event-form input,
+.add-event-form textarea,
+.add-event-form select {
+    border-radius: 5px;
+}
+.add-event-form button {
+    background: linear-gradient(45deg, #4caf50, #00c853);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.add-event-form button:hover {
+    background: linear-gradient(45deg, #388e3c, #00796b);
+    color: #fff;
+}
+.back-to-profile-btn {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+.back-to-profile-btn:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}
+
+/* -------------------Logout Page Styling------------------------ */
+.logout-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.logout-title{
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.logout-btn-danger {
+    background: linear-gradient(45deg, #e53935, #d32f2f);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+.logout-btn-danger:hover {
+    background: linear-gradient(45deg, #c62828, #b71c1c);
+    color: #fff;
+}
+.logout-btn-secondary {
+    background: linear-gradient(45deg, #757575, #424242);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+}
+.logout-btn-secondary:hover {
+    background: linear-gradient(45deg, #616161, #212121);
+    color: #fff;
+}
+
+/* -------------------404 Page Styling------------------------ */
+.display-3 {
+    font-size: 5rem;
+}
+.text-danger {
+    color: #ff4d4d;
+}
+.btn-gradient-404-home {
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.btn-gradient-404-home:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+}
+.btn-gradient-404-events {
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.btn-gradient-404-events:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: translateY(-3px);
+}
+
+/* Animation */
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-heading {
+        font-size: 2.5em;
+    }
+    .sub-heading {
+        font-size: 1.2em;
+    }
+    .cta-button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .custom-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .event-details h2 {
+        font-size: 1.5em;
+    }
+
+    .gradient-btn {
+        font-size: 1em;
+    }
+}
