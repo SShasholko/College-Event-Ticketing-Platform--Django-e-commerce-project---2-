@@ -1,0 +1,25 @@
+{% extends "events/base.html" %} 
+
+{% block title %}Payment Successful{% endblock %} 
+
+{% block content %}
+<div class="success-container">
+  <div class="success-card shadow-lg p-4 text-center">
+    <i class="fas fa-check-circle success-icon"></i>
+    <h1 class="success-title">Payment Successful!</h1>
+    <p class="success-message">
+      Thank you for your purchase. Your payment was processed successfully.
+    </p>
+    <a
+      href="{% url 'profile' %}"
+      class="btn success-view-tickets-btn"
+      >View Your Tickets</a
+    >
+    <a
+      href="{% url 'event_list' %}"
+      class="btn success-return-btn"
+      >Return to Event List</a
+    >
+  </div>
+</div>
+{% endblock %}

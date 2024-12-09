@@ -1,0 +1,126 @@
+{% extends "events/base.html" %} 
+{% load socialaccount %} 
+
+{% block title %}Sign Up{% endblock %} 
+
+{% block content %}
+<div
+  class="container d-flex align-items-center justify-content-center mt-5 mb-5"
+  style="min-height: 80vh"
+>
+  <div
+    class="card shadow-lg p-4"
+    style="max-width: 400px; width: 100%; border-radius: 15px"
+  >
+    <h2 class="text-center mb-4">Sign Up</h2>
+
+    <!-- Google Sign Up Button -->
+    <div class="text-center mb-3">
+      <a
+        href="{% provider_login_url 'google' %}"
+        class="btn btn-google w-100 py-2 mb-3"
+      >
+        <i class="fab fa-google me-2"></i> Sign up with Google
+      </a>
+    </div>
+
+    <div class="text-center mb-3">
+      <span>or</span>
+    </div>
+
+    <!-- Sign Up Form -->
+    <form
+      method="post"
+      action="{% url 'account_signup' %}"
+    >
+      {% csrf_token %}
+
+      <!-- Username Input -->
+      <div class="mb-3">
+        <label
+          for="id_username"
+          class="form-label"
+          >Username</label
+        >
+        <input
+          type="text"
+          id="id_username"
+          name="username"
+          class="form-control"
+          placeholder="Choose a username"
+          required
+        />
+      </div>
+
+      <!-- Email Input -->
+      <div class="mb-3">
+        <label
+          for="id_email"
+          class="form-label"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="id_email"
+          name="email"
+          class="form-control"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="mb-3">
+        <label
+          for="id_password1"
+          class="form-label"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="id_password1"
+          name="password1"
+          class="form-control"
+          placeholder="Create a password"
+          required
+        />
+      </div>
+
+      <!-- Confirm Password Input -->
+      <div class="mb-3">
+        <label
+          for="id_password2"
+          class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          id="id_password2"
+          name="password2"
+          class="form-control"
+          placeholder="Confirm your password"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn gradient-login-btn w-100 py-2 mb-3"
+      >
+        Sign Up
+      </button>
+    </form>
+
+    <!-- Log In Link -->
+    <p class="text-center mt-3">
+      Already have an account?
+      <a
+        href="{% url 'account_login' %}"
+        class="text-decoration-underline"
+        >Log in</a
+      >
+    </p>
+  </div>
+</div>
+{% endblock %}
