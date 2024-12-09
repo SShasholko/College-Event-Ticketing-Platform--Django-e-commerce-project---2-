@@ -1,0 +1,140 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Purchase Tickets{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center  mt-5 mb-5" style="min-height: 80vh;">
+    <div class="card-purchase shadow p-4" style="max-width: 600px; width: 100%; border-radius: 10px;">
+        <h2 class="text-center mb-4">Purchase Tickets for {{ event.title }}</h2>
+        <p class="text-center mb-4">
+            <strong>Price per Ticket:</strong> £{{ event.ticket_price }}
+        </p>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Select Quantity:</label>
+            <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                class="form-control"
+                min="1"
+                value="1"
+            >
+        </div>
+        <p class="text-center mb-4">
+            <strong>Total Price:</strong> £
+            <span id="total_price">{{ event.ticket_price }}</span>
+        </p>
+        <!-- Payment Form -->
+        <form id="payment-form">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ request.user.get_full_name }}"
+                    class="form-control"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ request.user.email }}"
+                    class="form-control"
+                    required
+                >
+            </div>
+            <!-- Stripe Card Element -->
+            <div id="card-element" class="mb-3 p-3 border rounded" style="border: 1px solid #ccc;"></div>
+            <div id="card-errors" role="alert" class="text-danger mb-3"></div>
+            <button type="button" id="submit-button" class="btn btn-gradient-purchase w-100 py-2">Purchase Ticket</button>
+        </form>
+        <div class="text-center mt-4">
+            <a href="{% url 'event_detail' event.id %}" class="btn btn-outline-dark w-100 py-2">Back to Event Details</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include Stripe JS library -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const stripe = Stripe("pk_test_51QABFFGariyyw43I1YaqstFbwppWvdVawZud6wrzfJ0OPdpm7sYkQxemEOaMadNml5s9QHisXkCD0MFMzrNy9TWM00LOGaJGxf");
+    const elements = stripe.elements();
+
+    const style = {
+        base: {
+            color: "#32325d",
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSize: "16px",
+            "::placeholder": { color: "#aab7c4" }
+        },
+        invalid: { color: "#fa755a" }
+    };
+
+    const cardElement = elements.create("card", { style: style, hidePostalCode: true });
+    cardElement.mount("#card-element");
+
+    cardElement.on("change", function (event) {
+        const displayError = document.getElementById("card-errors");
+        displayError.textContent = event.error ? event.error.message : "";
+    });
+
+    const quantityInput = document.getElementById("quantity");
+    const totalPriceSpan = document.getElementById("total_price");
+    const ticketPrice = {{ event.ticket_price|floatformat:2 }};
+    quantityInput.addEventListener("input", function () {
+        const quantity = parseInt(quantityInput.value) || 1;
+        const totalPrice = (quantity * ticketPrice).toFixed(2);
+        totalPriceSpan.textContent = totalPrice;
+    });
+
+    document.getElementById("submit-button").addEventListener("click", function (e) {
+        e.preventDefault();
+        const quantity = quantityInput.value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        fetch("{% url 'create_payment_intent' event.id %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: JSON.stringify({ quantity: quantity })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                document.getElementById("card-errors").textContent = data.error;
+            } else {
+                stripe.confirmCardPayment(data.client_secret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: { name: document.getElementById("name").value, email: document.getElementById("email").value }
+                    }
+                }).then(function (result) {
+                    if (result.error) {
+                        document.getElementById("card-errors").textContent = result.error.message;
+                    } else {
+                        window.location.href = "{% url 'success' %}";
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Payment initiation failed:", error);
+            document.getElementById("card-errors").textContent = "Failed to initiate payment. Please try again.";
+        });
+    });
+});
+</script>
+{% endblock %}

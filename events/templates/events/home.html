@@ -1,0 +1,71 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}Event Ticketing Platform{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <div class="container">
+            <h1 class="main-heading"> Discover, Book, and Experience the Best College Events</h1>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <h2 class="sub-heading">Your gateway to unforgettable moments – from concerts to competitions, we’ve got it all covered!</h2>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'event_list' %}" class="cta-button">Explore Events</a>
+    </div>
+</div>
+<div class="text-center mb-4 h2-style">
+    <h2>Upcoming Events</h2>
+</div>
+<div class="container">
+    <div class="row">
+        {% for event in soonest_events %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" class="card-img-top event-img" alt="{{ event.title }}">
+                {% else %}
+                <img src="{% static 'images/default-event.avif' %}" class="card-img-top event-img" alt="Default Event">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text">{{ event.description|truncatewords:20 }}</p>
+                    <p>
+                        <strong>Date:</strong> {{ event.date_time|date:"F d, Y h:i A" }}
+                    </p>
+                    <a href="{% url 'event_detail' event.id %}" class="btn w-100 gradient-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center">No upcoming events.</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-5">
+        <a href="{% url 'event_list' %}" class="btn colorful-btn">Explore All Events</a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll('.gradient-btn');
+        const gradients = [
+            'gradient-1',
+            'gradient-2',
+            'gradient-3',
+            'gradient-4',
+            'gradient-5',
+            'gradient-6',
+            'gradient-7'
+        ];
+        buttons.forEach(button => {
+            const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+            button.classList.add(randomGradient);
+        });
+    });
+</script>
+{% endblock %}
