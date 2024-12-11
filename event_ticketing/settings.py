@@ -30,9 +30,7 @@ CLOUDINARY = {
 
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -47,7 +45,6 @@ handler404 = 'event_ticketing.views.custom_404'
 SITE_ID = 2
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,11 +78,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
-EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
-
-
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'accounts/login/'
+LOGIN_REDIRECT_URL = '/' 
 LOGOUT_REDIRECT_URL = '/'
 
 
@@ -127,14 +121,12 @@ TEMPLATES = [
 ]
 
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -151,7 +143,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -159,8 +150,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -185,13 +174,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'aromashka556@gmail.com'
 EMAIL_HOST_PASSWORD = 'nwou texh qnzd mvua'
 
-
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
-
 MEDIA_URL = 'https://res.cloudinary.com/dqpu2tczt/image/upload/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-    
-
