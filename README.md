@@ -482,10 +482,7 @@ Steps to Deploy Directly to Heroku:
 ```python
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ```
-3. Set environment variables in Heroku:
-- `SECRET_KEY`
-- `CLOUDINARY_URL`
-- Stripe keys: `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`.
+3. Set environment variables in Heroku.
 
 ### Deploy to Heroku
 1. Log in to Heroku CLI:
